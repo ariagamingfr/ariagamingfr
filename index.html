@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ariagamingfr — Guides, Tests & Gameplay en français</title>
-  <meta name="description" content="Ariagamingfr — Tests, guides et gameplay en français. Retrouvez toutes mes vidéos sur YouTube et rejoignez le groupe de curation Steam.">
+  <meta name="description" content="Ariagamingfr — Tests, guides, actualités des sorties et gameplay en français. Retrouvez toutes mes vidéos sur YouTube et rejoignez le groupe de curation Steam.">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Ariagamingfr — Gaming YouTube & Tests">
   <meta property="og:description" content="Tests, guides et gameplay par Ariagamingfr — France">
@@ -19,6 +19,7 @@
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="apple-touch-icon" href="logo.png">
 
+  <!-- POLICES HISTOGAMES (Lora + Roboto) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -32,8 +33,8 @@
       --text: #2c2c2c;
       --muted: #666666;
       --line: #dcdad5;
-      --accent: #9e3b14;
-      --accent-dark: #7a2c0e;
+      --accent: #b84519;       /* Orange terracotta un peu plus clair et lumineux */
+      --accent-dark: #963511;  /* Teinte au survol légèrement plus soutenue */
       --radius: 4px;
     }
 
@@ -48,7 +49,7 @@
     a { color: inherit; }
     h1, h2, h3, .logo { font-family: 'Lora', serif; }
 
-    /* NAV */
+    /* BARRE DE NAVIGATION */
     nav {
       position: sticky; top: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
@@ -58,12 +59,12 @@
       border-bottom: 3px solid var(--accent);
     }
     .logo { font-weight: 700; font-size: 1.25rem; text-decoration: none; color: #fff; }
-    .logo span { color: #e07a5f; }
+    .logo span { color: #f28b66; } /* Orange clair pour le sous-titre du logo */
     .nav-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
     .nav-links a { font-size: 0.88rem; font-weight: 500; color: #ccc; text-decoration: none; transition: color .2s; cursor: pointer; }
     .nav-links a:hover { color: #fff; }
 
-    /* HERO */
+    /* HERO / EN-TÊTE PRINCIPAL */
     .hero { max-width: 800px; margin: 0 auto; padding: 4rem 1.5rem 2.5rem; text-align: center; background: var(--box-bg); border-bottom: 1px solid var(--line); }
     .hero-tag { display: inline-block; font-size: 0.78rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px; background: #faedcd; padding: 4px 10px; border-radius: var(--radius); margin-bottom: 1.2rem; }
     .hero h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 600; line-height: 1.2; margin-bottom: 1rem; color: #1a1a1a; }
@@ -85,13 +86,13 @@
     .partner .ig img { max-width: 60px; height: auto; display: block; }
     .partner small { display: block; margin-top: 0.4rem; font-size: 0.68rem; color: var(--muted); line-height: 1.4; }
 
-    /* STATS */
+    /* COMPTEURS ET STATS */
     .stats-bar { max-width: 1000px; margin: 1.5rem auto; display: flex; justify-content: center; gap: 3rem; padding: 1rem 1.5rem; background: var(--box-bg); border: 1px solid var(--line); border-radius: var(--radius); }
     .stat { text-align: center; }
     .stat-n { font-family: 'Lora', serif; font-size: 1.8rem; font-weight: 700; color: var(--accent); display: block; line-height: 1; }
     .stat-l { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
 
-    /* SECTIONS */
+    /* SECTIONS GÉNÉRALES */
     .section { max-width: 1000px; margin: 0 auto; padding: 3rem 1.5rem; background: var(--box-bg); border: 1px solid var(--line); margin-bottom: 2rem; border-radius: var(--radius); }
     .section-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--line); gap: 1rem; }
     .section-title { font-size: 1.4rem; font-weight: 600; color: #222; }
@@ -99,7 +100,54 @@
     .see-all { font-size: 0.85rem; font-weight: 600; color: var(--muted); text-decoration: none; transition: color .2s; }
     .see-all:hover { color: var(--accent); }
 
-    /* GRILLE VIDÉOS */
+    /* CARROUSEL D'ACTUALITÉS */
+    .carousel-controls { display: flex; gap: 0.4rem; align-items: center; }
+    .carousel-btn { background: #fafafa; border: 1px solid var(--line); border-radius: var(--radius); color: #333; font-size: 1rem; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; user-select: none; }
+    .carousel-btn:hover { border-color: var(--accent); color: var(--accent); background: #fff; }
+
+    .carousel-wrapper {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 0.8rem;
+    }
+    .carousel-wrapper::-webkit-scrollbar { height: 6px; }
+    .carousel-wrapper::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+    .carousel-wrapper::-webkit-scrollbar-track { background: #eee; }
+
+    .carousel-track { display: flex; gap: 1.2rem; width: max-content; }
+
+    .news-card {
+      width: 360px;
+      scroll-snap-align: start;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fafafa;
+      padding: 1.2rem;
+      transition: border-color .2s;
+    }
+    @media (max-width: 580px) { .news-card { width: 280px; } }
+
+    .news-card:hover { border-color: var(--accent); background: #fff; }
+    .news-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem; }
+    .news-date { font-size: 0.75rem; color: var(--muted); font-weight: 500; }
+    .news-title { font-family: 'Lora', serif; font-size: 1.05rem; font-weight: 600; color: #1a1a1a; margin-bottom: 0.5rem; line-height: 1.35; }
+    .news-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin-bottom: 0.8rem; }
+    .news-details { font-size: 0.78rem; color: var(--muted); margin-bottom: 1rem; line-height: 1.45; }
+    .news-details p { margin-bottom: 0.4rem; }
+    .news-details strong { color: var(--text); }
+
+    .news-footer-guides { margin-top: auto; padding-top: 0.8rem; border-top: 1px dashed var(--line); }
+    .news-footer-label { display: block; font-size: 0.72rem; font-weight: 700; color: var(--muted); text-transform: uppercase; margin-bottom: 0.4rem; }
+    .news-guides-links { display: flex; flex-direction: column; gap: 0.35rem; }
+    .news-guide-btn { display: inline-flex; align-items: center; gap: 5px; font-size: 0.76rem; font-weight: 600; color: var(--accent); text-decoration: none; transition: color .2s; }
+    .news-guide-btn:hover { color: var(--accent-dark); text-decoration: underline; }
+
+    /* GRILLE ET CARTES VIDÉOS */
     .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
     @media (max-width: 880px) { .video-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 580px) { .video-grid { grid-template-columns: 1fr; } }
@@ -116,10 +164,9 @@
     .video-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.45; margin-bottom: 0.8rem; }
     .video-meta { margin-top: auto; display: flex; align-items: center; justify-content: space-between; font-size: 0.72rem; color: var(--muted); padding-top: 0.6rem; border-top: 1px solid var(--line); }
 
-    /* Style des vidéos masquées */
     .video-card.hidden { display: none; }
 
-    /* BOUTON VOIR PLUS */
+    /* BOUTON DÉROULANT VIDÉOS */
     .more-btn-container { text-align: center; margin-top: 1.8rem; }
     .toggle-videos-btn {
       background: #fafafa;
@@ -138,13 +185,14 @@
       color: var(--accent);
     }
 
-    /* TAGS */
+    /* BADGES ET TAGS */
     .tag { font-size: 0.68rem; padding: 2px 6px; border-radius: 2px; font-weight: 600; text-transform: uppercase; background: #eee; color: #555; }
     .tag-test { background: #fdf2f2; color: #a91e1e; }
     .tag-guide { background: #fdf6ec; color: #9e5b00; }
     .tag-actu, .tag-preview { background: #ebf3fc; color: #1557b0; }
     .tag-decouverte { background: #f3f0fd; color: #5935d8; }
     .tag-walkthrough { background: #edf9f0; color: #1e7e34; }
+    .tag-sortie { background: #faedcd; color: #b84519; } /* Tag de sortie assorti à l'orange clair */
 
     /* FOOTER */
     footer { border-top: 1px solid var(--line); padding: 2rem 1.5rem; text-align: center; background: #2b2b2b; color: #aaa; margin-top: 3rem; }
@@ -156,30 +204,36 @@
 </head>
 <body>
 
-  <!-- NAVIGATION -->
+  <!-- ================================================================= -->
+  <!-- 📍 REPÈRE 1 : BARRE DE NAVIGATION (NAVBAR)                       -->
+  <!-- ================================================================= -->
   <nav>
     <a class="logo" href="#">Aria<span>gaming</span>fr</a>
     <div class="nav-links">
+      <a href="#actu">Sorties &amp; Actu</a>
       <a href="#videos">Vidéos</a>
-      <a href="https://medium.com/@ariagamingfr" target="_blank">Articles</a>
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- ================================================================= -->
+  <!-- 📍 REPÈRE 2 : HERO (EN-TÊTE PRINCIPAL DE PRÉSENTATION)             -->
+  <!-- ================================================================= -->
   <header class="hero">
     <span class="hero-tag">Tests, Guides &amp; Gameplay · France</span>
     <h1>Guides, tests &amp; <em>gameplay</em> en français</h1>
     <p>L'actualité et l'univers des jeux vidéo indépendants et de gestion — décryptés avec passion.</p>
     <div class="btn-row">
       <a class="btn btn-primary" href="https://www.youtube.com/@ariagamingfr" target="_blank" rel="noopener">▶ Chaîne YouTube</a>
-      <a class="btn" href="https://medium.com/@ariagamingfr" target="_blank" rel="noopener">✍ Articles Medium</a>
+      <a class="btn" href="#actu">📰 Actualités &amp; Sorties</a>
       <a class="btn" href="guide-manor-lords.html" target="_blank" rel="noopener">⭐ Manor Lords</a>
-      <a class="btn" href="guide-foundation.html" target="_blank" rel="noopener">📜 Foundation</a>
+      <a class="btn" href="guide-foundation.html">📜 Foundation</a>
       <a class="btn" href="guide-going-medieval.html" target="_blank" rel="noopener">🏰 Going Medieval</a>
     </div>
   </header>
 
-  <!-- PARTENAIRES -->
+  <!-- ================================================================= -->
+  <!-- 📍 REPÈRE 3 : BLOC DES PARTENAIRES (STEAM / INSTANT GAMING)        -->
+  <!-- ================================================================= -->
   <div class="partners">
     <div class="partner">
       <a class="steam" href="https://steamcommunity.com/groups/ariagamingfr/curation" target="_blank" rel="noopener">🎮 Curateur Steam</a>
@@ -193,13 +247,70 @@
     </div>
   </div>
 
-  <!-- STATS -->
+  <!-- ================================================================= -->
+  <!-- 📍 REPÈRE 4 : BARRE DES STATISTIQUES                              -->
+  <!-- ================================================================= -->
   <div class="stats-bar">
     <div class="stat"><span class="stat-n">14</span><span class="stat-l">Vidéos</span></div>
     <div class="stat"><span class="stat-n">4</span><span class="stat-l">Tests écrits</span></div>
   </div>
 
-  <!-- SECTION VIDEOS (3 VISIBLES + BOUTON DÉROULANT) -->
+  <!-- ================================================================= -->
+  <!-- 📍 REPÈRE 5 : SECTION ACTUALITÉS & SORTIES (CARROUSEL INTERACTIF) -->
+  <!-- ================================================================= -->
+  <section class="section" id="actu">
+    <div class="section-head">
+      <h2 class="section-title">Actualités &amp; Sorties à venir<span class="dot">.</span></h2>
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="newsPrevBtn" title="Précédent">‹</button>
+        <button class="carousel-btn" id="newsNextBtn" title="Suivant">›</button>
+        <a class="see-all" href="https://steamcommunity.com/groups/ariagamingfr/curation" target="_blank" rel="noopener" style="margin-left: 0.5rem;">Steam →</a>
+      </div>
+    </div>
+
+    <div class="carousel-wrapper" id="newsCarouselWrapper">
+      <div class="carousel-track">
+
+        <!-- ─────────────────────────────────────────────────────────── -->
+        <!-- 📍 REPÈRE 5.1 : ENCART 1 - FOUNDATION HARVEST FESTIVAL      -->
+        <!-- ─────────────────────────────────────────────────────────── -->
+        <div class="news-card">
+          <div class="news-header">
+            <span class="tag tag-sortie">Sortie DLC</span>
+            <span class="news-date">8 oct. 2026</span>
+          </div>
+          <h3 class="news-title">Foundation : DLC Harvest Festival &amp; MAJ Gratuite</h3>
+          <p class="news-desc">
+            Le premier DLC majeur du jeu s'attaque à l'agriculture médiévale et à la fête des moissons !
+          </p>
+
+          <div class="news-details">
+            <p><strong>Dev / Éditeur :</strong> Polymorph Games</p>
+            <p><strong>Contenu DLC :</strong> Fermette commune (poulets, cochons, oies, poussins/porcelets/oisillons), vergers (pommes, prunes, noisettes), fermes à navets &amp; choux, cidrerie, four de séchage, boucherie, aire de fête à la taverne (repas, jongleurs, ménestrels, comédiens, tenues de fête &amp; visite du Roi).</p>
+            <p><strong>MAJ Gratuite :</strong> Streaming de textures (optimisation grandes villes / VRAM limitée), Taverne Élégante, pièces pour la Scierie, ambiance lumineuse "Aube", refonte du registre royal, recherche par mots-clés dans le menu Construction &amp; encyclopédie.</p>
+          </div>
+
+          <div class="news-footer-guides">
+            <span class="news-footer-label">Mes guides vidéo dédiés :</span>
+            <div class="news-guides-links">
+              <a class="news-guide-btn" href="https://youtu.be/Up3GbzcEDlk" target="_blank" rel="noopener">▶ Guide 1 : Débuter sa ville &amp; Poulaillers</a>
+              <a class="news-guide-btn" href="https://youtu.be/QkIjJhmOPrs" target="_blank" rel="noopener">▶ Guide 2 : Réussir les Fêtes des Récoltes</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─────────────────────────────────────────────────────────── -->
+        <!-- 📍 REPÈRE 5.2 : EMPLACEMENT POUR VOS PROCHAINS ENCARTS      -->
+        <!-- (Dupliquez le bloc news-card ci-dessus pour vos futurs jeux)-->
+        <!-- ─────────────────────────────────────────────────────────── -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================= -->
+  <!-- 📍 REPÈRE 6 : SECTION MES VIDÉOS (GRILLE + BOUTON VOIR PLUS)       -->
+  <!-- ================================================================= -->
   <section class="section" id="videos">
     <div class="section-head">
       <h2 class="section-title">Mes vidéos récentes<span class="dot">.</span></h2>
@@ -208,7 +319,7 @@
 
     <div class="video-grid" id="videoGrid">
 
-      <!-- 3 PREMIÈRES VIDÉOS (VISIBLES PAR DÉFAUT) -->
+      <!-- 📍 REPÈRE 6.1 : LES 3 PREMIÈRES VIDÉOS (VISIBLES DÉFAUT) -->
       <a class="video-card" href="https://youtu.be/2HwAAdiRI8o" target="_blank" rel="noopener">
         <div class="video-thumb"><img src="https://img.youtube.com/vi/2HwAAdiRI8o/mqdefault.jpg" alt="Servant of the Lake Walkthrough" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
         <div class="video-info">
@@ -236,7 +347,7 @@
         </div>
       </a>
 
-      <!-- VIDÉOS MASQUÉES INITIALEMENT -->
+      <!-- 📍 REPÈRE 6.2 : LES 11 VIDÉOS MASQUÉES (SE DÉPLOIENT AU CLIC) -->
       <a class="video-card hidden" href="https://youtu.be/1e4DRMy1o7A" target="_blank" rel="noopener">
         <div class="video-thumb"><img src="https://img.youtube.com/vi/1e4DRMy1o7A/mqdefault.jpg" alt="Silver Pines Survival Horror" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
         <div class="video-info">
@@ -258,7 +369,7 @@
       <a class="video-card hidden" href="https://youtu.be/2CEcLqLKQ50" target="_blank" rel="noopener">
         <div class="video-thumb"><img src="https://img.youtube.com/vi/2CEcLqLKQ50/mqdefault.jpg" alt="The Witcher 3 Remastered" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
         <div class="video-info">
-          <p class="video-title">The Witcher 3 Remastered : Mise à jour gratuite & extension</p>
+          <p class="video-title">The Witcher 3 Remastered : Mise à jour gratuite &amp; extension</p>
           <p class="video-desc">The Witcher 3 revient avec une importante mise à jour gratuite et du nouveau contenu.</p>
           <div class="video-meta"><span class="tag tag-preview">Preview</span><span>The Witcher 3</span></div>
         </div>
@@ -338,61 +449,85 @@
 
     </div>
 
-    <!-- BOUTON DÉROULANT -->
+    <!-- BOUTON DÉROULANT POUR LES VIDÉOS -->
     <div class="more-btn-container">
       <button class="toggle-videos-btn" id="toggleVideosBtn">Afficher toutes les vidéos (+11)</button>
     </div>
   </section>
 
-  <!-- FOOTER ET COMPTEUR DE VISITEURS -->
+  <!-- ================================================================= -->
+  <!-- 📍 REPÈRE 7 : PIED DE PAGE ET COMPTEUR DE VISITEURS               -->
+  <!-- ================================================================= -->
   <footer>
     <div class="footer-links">
       <a href="https://www.youtube.com/@ariagamingfr" target="_blank" rel="noopener">YouTube</a>
       <a href="https://steamcommunity.com/groups/ariagamingfr/curation" target="_blank" rel="noopener">Steam</a>
-      <a href="https://medium.com/@ariagamingfr" target="_blank" rel="noopener">Medium</a>
     </div>
     <p class="footer-copy">© 2026 Ariagamingfr — Tous droits réservés.</p>
 
+    <!-- COMPTEUR DYNAMIQUE COUNTERAPI -->
     <p style="font-size: 0.75rem; color: #888; margin-top: 0.6rem;">
       Visites : <span id="visitor-count">Chargement...</span>
     </p>
   </footer>
 
-  <!-- SCRIPTS -->
+  <!-- ================================================================= -->
+  <!-- 📍 REPÈRE 8 : SCRIPTS JAVASCRIPT (CARROUSEL, DEPLOIEMENT, COUNTER) -->
+  <!-- ================================================================= -->
   <script>
-    // GESTION DE L'AFFICHAGE DES VIDÉOS
     document.addEventListener("DOMContentLoaded", function() {
+      // 8.1 GESTION DU DÉFILEMENT DU CARROUSEL ACTUALITÉS
+      const newsWrapper = document.getElementById('newsCarouselWrapper');
+      const newsPrevBtn = document.getElementById('newsPrevBtn');
+      const newsNextBtn = document.getElementById('newsNextBtn');
+      const cardWidth = 380; // Largeur d'une carte d'actualité + écartement
+
+      if (newsPrevBtn && newsNextBtn && newsWrapper) {
+        newsNextBtn.addEventListener('click', () => {
+          newsWrapper.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        });
+
+        newsPrevBtn.addEventListener('click', () => {
+          newsWrapper.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+        });
+      }
+
+      // 8.2 GESTION DU BOUTON AFFICHER/RÉDUIRE TOUTES LES VIDÉOS
       const toggleBtn = document.getElementById('toggleVideosBtn');
       const hiddenCards = document.querySelectorAll('.video-card.hidden');
       let isExpanded = false;
 
-      toggleBtn.addEventListener('click', function() {
-        isExpanded = !isExpanded;
-        hiddenCards.forEach(card => {
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', function() {
+          isExpanded = !isExpanded;
+          hiddenCards.forEach(card => {
+            card.style.display = isExpanded ? 'flex' : 'none';
+          });
+
           if (isExpanded) {
-            card.style.display = 'flex';
+            toggleBtn.textContent = 'Réduire la liste';
           } else {
-            card.style.display = 'none';
+            toggleBtn.textContent = `Afficher toutes les vidéos (+${hiddenCards.length})`;
+            document.getElementById('videos').scrollIntoView({ behavior: 'smooth' });
           }
         });
-
-        if (isExpanded) {
-          toggleBtn.textContent = 'Réduire la liste';
-        } else {
-          toggleBtn.textContent = `Afficher toutes les vidéos (+${hiddenCards.length})`;
-          document.getElementById('videos').scrollIntoView({ behavior: 'smooth' });
-        }
-      });
+      }
     });
 
-    // COMPTEUR DE VISITES
+    // 8.3 RECUPERATION ET AFFICHAGE DU COMPTEUR DE VISITES
     async function trackVisitor() {
       try {
         let response = await fetch('https://api.counterapi.dev/v1/ariagamingfr/site/hit');
         let data = await response.json();
-        document.getElementById('visitor-count').textContent = data.count.toLocaleString('fr-FR');
+        const countSpan = document.getElementById('visitor-count');
+        if (countSpan && data.count) {
+          countSpan.textContent = data.count.toLocaleString('fr-FR');
+        }
       } catch (error) {
-        document.getElementById('visitor-count').parentElement.style.display = 'none';
+        const countSpan = document.getElementById('visitor-count');
+        if (countSpan && countSpan.parentElement) {
+          countSpan.parentElement.style.display = 'none';
+        }
       }
     }
     trackVisitor();
