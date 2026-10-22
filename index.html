@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ariagamingfr — Guides, Tests & Gameplay en français</title>
-  <meta name="description" content="Ariagamingfr — Tests, guides et gameplay en français. Retrouvez toutes mes vidéos sur YouTube et pour ne rien rater de mes recommandations, rejoignez le groupe de curation Steam.">
+  <meta name="description" content="Ariagamingfr — Tests, guides et gameplay en français. Retrouvez toutes mes vidéos sur YouTube et rejoignez le groupe de curation Steam.">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Ariagamingfr — Gaming YouTube & Tests">
   <meta property="og:description" content="Tests, guides et gameplay par Ariagamingfr — France">
@@ -99,18 +99,12 @@
     .see-all { font-size: 0.85rem; font-weight: 600; color: var(--muted); text-decoration: none; transition: color .2s; }
     .see-all:hover { color: var(--accent); }
 
-    /* CARROUSEL STYLES */
-    .carousel-controls { display: flex; gap: 0.5rem; align-items: center; }
-    .carousel-btn { background: #fafafa; border: 1px solid var(--line); border-radius: var(--radius); color: #333; font-size: 1.2rem; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; user-select: none; }
-    .carousel-btn:hover { border-color: var(--accent); color: var(--accent); background: #fff; }
-    
-    .carousel-wrapper { overflow: hidden; position: relative; width: 100%; }
-    .carousel-track { display: flex; transition: transform 0.4s ease-in-out; gap: 1.2rem; width: 100%; }
+    /* GRILLE VIDÉOS */
+    .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+    @media (max-width: 880px) { .video-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 580px) { .video-grid { grid-template-columns: 1fr; } }
 
-    .video-card { flex: 0 0 calc((100% - 2.4rem) / 3); display: flex; flex-direction: column; text-decoration: none; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #fff; transition: border-color .2s; }
-    @media (max-width: 880px) { .video-card { flex: 0 0 calc((100% - 1.2rem) / 2); } }
-    @media (max-width: 580px) { .video-card { flex: 0 0 100%; } }
-
+    .video-card { display: flex; flex-direction: column; text-decoration: none; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #fff; transition: border-color .2s; }
     .video-card:hover { border-color: var(--accent); }
     .video-thumb { aspect-ratio: 16/9; background: #eee; position: relative; overflow: hidden; }
     .video-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -121,6 +115,28 @@
     .video-title { font-size: 0.9rem; font-weight: 600; line-height: 1.35; margin-bottom: 0.4rem; color: #222; }
     .video-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.45; margin-bottom: 0.8rem; }
     .video-meta { margin-top: auto; display: flex; align-items: center; justify-content: space-between; font-size: 0.72rem; color: var(--muted); padding-top: 0.6rem; border-top: 1px solid var(--line); }
+
+    /* Style des vidéos masquées */
+    .video-card.hidden { display: none; }
+
+    /* BOUTON VOIR PLUS */
+    .more-btn-container { text-align: center; margin-top: 1.8rem; }
+    .toggle-videos-btn {
+      background: #fafafa;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      color: #333;
+      padding: 0.7rem 1.5rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .toggle-videos-btn:hover {
+      background: #fff;
+      border-color: var(--accent);
+      color: var(--accent);
+    }
 
     /* TAGS */
     .tag { font-size: 0.68rem; padding: 2px 6px; border-radius: 2px; font-weight: 600; text-transform: uppercase; background: #eee; color: #555; }
@@ -183,147 +199,148 @@
     <div class="stat"><span class="stat-n">4</span><span class="stat-l">Tests écrits</span></div>
   </div>
 
-  <!-- SECTION VIDEOS AVEC CARROUSEL -->
+  <!-- SECTION VIDEOS (3 VISIBLES + BOUTON DÉROULANT) -->
   <section class="section" id="videos">
     <div class="section-head">
-      <h2 class="section-title">Mes vidéos<span class="dot">.</span></h2>
-      <div class="carousel-controls">
-        <button class="carousel-btn" id="prevBtn" title="Précédent">‹</button>
-        <button class="carousel-btn" id="nextBtn" title="Suivant">›</button>
-        <a class="see-all" href="https://www.youtube.com/@ariagamingfr" target="_blank" rel="noopener" style="margin-left: 0.5rem;">YouTube →</a>
-      </div>
+      <h2 class="section-title">Mes vidéos récentes<span class="dot">.</span></h2>
+      <a class="see-all" href="https://www.youtube.com/@ariagamingfr" target="_blank" rel="noopener">YouTube →</a>
     </div>
 
-    <div class="carousel-wrapper" id="carouselWrapper">
-      <div class="carousel-track" id="carouselTrack">
+    <div class="video-grid" id="videoGrid">
 
-        <a id="servant-of-the-lake" class="video-card" href="https://youtu.be/2HwAAdiRI8o" target="_blank" rel="noopener">
-          <div class="video-thumb"><img src="https://img.youtube.com/vi/2HwAAdiRI8o/mqdefault.jpg" alt="Servant of the Lake Walkthrough" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
-          <div class="video-info">
-            <p class="video-title">Servant of the Lake FR (Rusty Lake) - Jour 1 (Walkthrough)</p>
-            <p class="video-desc">Solution complète du Jour 1 : énigmes des bougies, service du thé et fouille du grenier.</p>
-            <div class="video-meta"><span class="tag tag-walkthrough">Walkthrough</span><span>Rusty Lake</span></div>
-          </div>
-        </a>
+      <!-- 3 PREMIÈRES VIDÉOS (VISIBLES PAR DÉFAUT) -->
+      <a class="video-card" href="https://youtu.be/2HwAAdiRI8o" target="_blank" rel="noopener">
+        <div class="video-thumb"><img src="https://img.youtube.com/vi/2HwAAdiRI8o/mqdefault.jpg" alt="Servant of the Lake Walkthrough" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+        <div class="video-info">
+          <p class="video-title">Servant of the Lake FR (Rusty Lake) - Jour 1 (Walkthrough)</p>
+          <p class="video-desc">Solution complète du Jour 1 : énigmes des bougies, service du thé et fouille du grenier.</p>
+          <div class="video-meta"><span class="tag tag-walkthrough">Walkthrough</span><span>Rusty Lake</span></div>
+        </div>
+      </a>
 
-        <a id="blood-dawnwalker" class="video-card" href="https://youtu.be/lHpOUpbc36w" target="_blank" rel="noopener">
-          <div class="video-thumb"><img src="https://img.youtube.com/vi/lHpOUpbc36w/mqdefault.jpg" alt="The Blood of Dawnwalker Guide" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
-          <div class="video-info">
-            <p class="video-title">The Blood of Dawnwalker : Guide du Système de Combat</p>
-            <p class="video-desc">Parades directionnelles, esquive, alternance jour/nuit et compétences vampiriques.</p>
-            <div class="video-meta"><span class="tag tag-guide">Guide</span><span>Dawnwalker</span></div>
-          </div>
-        </a>
+      <a class="video-card" href="https://youtu.be/lHpOUpbc36w" target="_blank" rel="noopener">
+        <div class="video-thumb"><img src="https://img.youtube.com/vi/lHpOUpbc36w/mqdefault.jpg" alt="The Blood of Dawnwalker Guide" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+        <div class="video-info">
+          <p class="video-title">The Blood of Dawnwalker : Guide du Système de Combat</p>
+          <p class="video-desc">Parades directionnelles, esquive, alternance jour/nuit et compétences vampiriques.</p>
+          <div class="video-meta"><span class="tag tag-guide">Guide</span><span>Dawnwalker</span></div>
+        </div>
+      </a>
 
-        <a id="plague-tale-resonance" class="video-card" href="https://youtu.be/vT4rJHYzLBs" target="_blank" rel="noopener">
-          <div class="video-thumb"><img src="https://img.youtube.com/vi/vT4rJHYzLBs/mqdefault.jpg" alt="Resonance A Plague Tale Legacy Guide" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
-          <div class="video-info">
-            <p class="video-title">Resonance: A Plague Tale Legacy | Guide Complet Combat</p>
-            <p class="video-desc">Le nouveau gameplay axé sur l'action, les parades de Sofia, le grappin et l'ambiance horrifique.</p>
-            <div class="video-meta"><span class="tag tag-guide">Guide</span><span>A Plague Tale</span></div>
-          </div>
-        </a>
+      <a class="video-card" href="https://youtu.be/vT4rJHYzLBs" target="_blank" rel="noopener">
+        <div class="video-thumb"><img src="https://img.youtube.com/vi/vT4rJHYzLBs/mqdefault.jpg" alt="Resonance A Plague Tale Legacy Guide" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+        <div class="video-info">
+          <p class="video-title">Resonance: A Plague Tale Legacy | Guide Complet Combat</p>
+          <p class="video-desc">Le nouveau gameplay axé sur l'action, les parades de Sofia, le grappin et l'ambiance horrifique.</p>
+          <div class="video-meta"><span class="tag tag-guide">Guide</span><span>A Plague Tale</span></div>
+        </div>
+      </a>
 
-        <a id="silver-pines" class="video-card" href="https://youtu.be/1e4DRMy1o7A" target="_blank" rel="noopener">
-          <div class="video-thumb"><img src="https://img.youtube.com/vi/1e4DRMy1o7A/mqdefault.jpg" alt="Silver Pines Survival Horror" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
-          <div class="video-info">
-            <p class="video-title">Silver Pines : Survival Horror entre Twin Peaks et Silent Hill</p>
-            <p class="video-desc">Un survival horror metroidvania angoissant développé par Wych Elm et édité par Team17.</p>
-            <div class="video-meta"><span class="tag tag-decouverte">Découverte</span><span>Silver Pines</span></div>
-          </div>
-        </a>
+      <!-- VIDÉOS MASQUÉES INITIALEMENT -->
+      <a class="video-card hidden" href="https://youtu.be/1e4DRMy1o7A" target="_blank" rel="noopener">
+        <div class="video-thumb"><img src="https://img.youtube.com/vi/1e4DRMy1o7A/mqdefault.jpg" alt="Silver Pines Survival Horror" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+        <div class="video-info">
+          <p class="video-title">Silver Pines : Survival Horror entre Twin Peaks et Silent Hill</p>
+          <p class="video-desc">Un survival horror metroidvania angoissant développé par Wych Elm et édité par Team17.</p>
+          <div class="video-meta"><span class="tag tag-decouverte">Découverte</span><span>Silver Pines</span></div>
+        </div>
+      </a>
 
-        <a id="manor-lords-maj" class="video-card" href="https://youtu.be/240KL1T93CY" target="_blank" rel="noopener">
-          <div class="video-thumb"><img src="https://img.youtube.com/vi/240KL1T93CY/mqdefault.jpg" alt="Manor Lords Mise à Jour Guide" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
-          <div class="video-info">
-            <p class="video-title">Manor Lords : Guide Nouvelle Mise à Jour (Avoine, Vaches...)</p>
-            <p class="video-desc">Cultures d'avoine, bétail en hiver, nouvelles constructions et logistique améliorée.</p>
-            <div class="video-meta"><span class="tag tag-guide">Guide</span><span>Manor Lords</span></div>
-          </div>
-        </a>
+      <a class="video-card hidden" href="https://youtu.be/240KL1T93CY" target="_blank" rel="noopener">
+        <div class="video-thumb"><img src="https://img.youtube.com/vi/240KL1T93CY/mqdefault.jpg" alt="Manor Lords Mise à Jour Guide" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+        <div class="video-info">
+          <p class="video-title">Manor Lords : Guide Nouvelle Mise à Jour (Avoine, Vaches...)</p>
+          <p class="video-desc">Cultures d'avoine, bétail en hiver, nouvelles constructions et logistique améliorée.</p>
+          <div class="video-meta"><span class="tag tag-guide">Guide</span><span>Manor Lords</span></div>
+        </div>
+      </a>
 
-        <a id="nouvelle-video" class="video-card" href="https://youtu.be/2CEcLqLKQ50" target="_blank" rel="noopener">
-          <div class="video-thumb"><img src="https://img.youtube.com/vi/2CEcLqLKQ50/mqdefault.jpg" alt="The Witcher 3 Remastered" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
-          <div class="video-info">
-            <p class="video-title">The Witcher 3 Remastered : Mise à jour gratuite & extension</p>
-            <p class="video-desc">The Witcher 3 revient avec une importante mise à jour gratuite et du nouveau contenu.</p>
-            <div class="video-meta"><span class="tag tag-preview">Preview</span><span>The Witcher 3</span></div>
-          </div>
-        </a>
+      <a class="video-card hidden" href="https://youtu.be/2CEcLqLKQ50" target="_blank" rel="noopener">
+        <div class="video-thumb"><img src="https://img.youtube.com/vi/2CEcLqLKQ50/mqdefault.jpg" alt="The Witcher 3 Remastered" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+        <div class="video-info">
+          <p class="video-title">The Witcher 3 Remastered : Mise à jour gratuite & extension</p>
+          <p class="video-desc">The Witcher 3 revient avec une importante mise à jour gratuite et du nouveau contenu.</p>
+          <div class="video-meta"><span class="tag tag-preview">Preview</span><span>The Witcher 3</span></div>
+        </div>
+      </a>
 
-        <a id="going-medieval" class="video-card" href="https://youtu.be/EgsuNLhmRHM" target="_blank" rel="noopener">
-          <div class="video-thumb"><img src="https://img.youtube.com/vi/EgsuNLhmRHM/mqdefault.jpg" alt="Going Medieval 1.0 Guide Débutant" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
-          <div class="video-info">
-            <p class="video-title">Going Medieval 1.0 — Guide Débutant FR</p>
-            <p class="video-desc">Tout ce qu'il faut savoir pour bien démarrer ta colonie médiévale dans la version 1.0.</p>
-            <div class="video-meta"><span class="tag tag-guide">Guide</span><span>Going Medieval</span></div>
-          </div>
-        </a>
+      <a class="video-card hidden" href="https://youtu.be/EgsuNLhmRHM" target="_blank" rel="noopener">
+        <div class="video-thumb"><img src="https://img.youtube.com/vi/EgsuNLhmRHM/mqdefault.jpg" alt="Going Medieval 1.0 Guide Débutant" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+        <div class="video-info">
+          <p class="video-title">Going Medieval 1.0 — Guide Débutant FR</p>
+          <p class="video-desc">Tout ce qu'il faut savoir pour bien démarrer ta colonie médiévale dans la version 1.0.</p>
+          <div class="video-meta"><span class="tag tag-guide">Guide</span><span>Going Medieval</span></div>
+        </div>
+      </a>
 
-        <a id="life-below" class="video-card" href="https://youtu.be/bqp1fVR527g" target="_blank" rel="noopener">
-          <div class="video-thumb"><img src="https://img.youtube.com/vi/bqp1fVR527g/mqdefault.jpg" alt="Life Below" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
-          <div class="video-info">
-            <p class="video-title">Life Below : Guide et Avis City-Builder Sous-Marin</p>
-            <p class="video-desc">Avis et guide sur Life Below, le city-builder sous-marin indé — ambiance chill et gestion.</p>
-            <div class="video-meta"><span class="tag tag-test">Test</span><span>Life Below</span></div>
-          </div>
-        </a>
+      <a class="video-card hidden" href="https://youtu.be/bqp1fVR527g" target="_blank" rel="noopener">
+        <div class="video-thumb"><img src="https://img.youtube.com/vi/bqp1fVR527g/mqdefault.jpg" alt="Life Below" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+        <div class="video-info">
+          <p class="video-title">Life Below : Guide et Avis City-Builder Sous-Marin</p>
+          <p class="video-desc">Avis et guide sur Life Below, le city-builder sous-marin indé — ambiance chill et gestion.</p>
+          <div class="video-meta"><span class="tag tag-test">Test</span><span>Life Below</span></div>
+        </div>
+      </a>
 
-        <a id="subnautica2" class="video-card" href="https://youtu.be/ISSc8oM8jXw" target="_blank" rel="noopener">
-          <div class="video-thumb"><img src="https://img.youtube.com/vi/ISSc8oM8jXw/mqdefault.jpg" alt="Subnautica 2" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
-          <div class="video-info">
-            <p class="video-title">Subnautica 2 : Guide de Démarrage</p>
-            <p class="video-desc">Guide de démarrage : ressources essentielles, crafts et conseils pour survivre sous les mers.</p>
-            <div class="video-meta"><span class="tag tag-guide">Guide</span><span>Subnautica 2</span></div>
-          </div>
-        </a>
+      <a class="video-card hidden" href="https://youtu.be/ISSc8oM8jXw" target="_blank" rel="noopener">
+        <div class="video-thumb"><img src="https://img.youtube.com/vi/ISSc8oM8jXw/mqdefault.jpg" alt="Subnautica 2" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+        <div class="video-info">
+          <p class="video-title">Subnautica 2 : Guide de Démarrage</p>
+          <p class="video-desc">Guide de démarrage : ressources essentielles, crafts et conseils pour survivre sous les mers.</p>
+          <div class="video-meta"><span class="tag tag-guide">Guide</span><span>Subnautica 2</span></div>
+        </div>
+      </a>
 
-        <a id="aska" class="video-card" href="https://youtu.be/TXwnMiNSGrE" target="_blank" rel="noopener">
-          <div class="video-thumb"><img src="https://img.youtube.com/vi/TXwnMiNSGrE/mqdefault.jpg" alt="ASKA" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
-          <div class="video-info">
-            <p class="video-title">ASKA FR | Bien Démarrer sa Tribu Viking</p>
-            <p class="video-desc">Comment bien démarrer ta tribu viking, gérer tes ressources et progresser rapidement.</p>
-            <div class="video-meta"><span class="tag tag-guide">Guide</span><span>ASKA</span></div>
-          </div>
-        </a>
+      <a class="video-card hidden" href="https://youtu.be/TXwnMiNSGrE" target="_blank" rel="noopener">
+        <div class="video-thumb"><img src="https://img.youtube.com/vi/TXwnMiNSGrE/mqdefault.jpg" alt="ASKA" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+        <div class="video-info">
+          <p class="video-title">ASKA FR | Bien Démarrer sa Tribu Viking</p>
+          <p class="video-desc">Comment bien démarrer ta tribu viking, gérer tes ressources et progresser rapidement.</p>
+          <div class="video-meta"><span class="tag tag-guide">Guide</span><span>ASKA</span></div>
+        </div>
+      </a>
 
-        <a id="aether-iron" class="video-card" href="https://youtu.be/DoY4sIuGMzU" target="_blank" rel="noopener">
-          <div class="video-thumb"><img src="https://img.youtube.com/vi/DoY4sIuGMzU/mqdefault.jpg" alt="Aether and Iron" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
-          <div class="video-info">
-            <p class="video-title">Test Aether and Iron — Gameplay Vidéo FR</p>
-            <p class="video-desc">Un RPG narratif à la Disco Elysium où l'on combat en voiture dans un univers unique.</p>
-            <div class="video-meta"><span class="tag tag-test">Test</span><span>Aether and Iron</span></div>
-          </div>
-        </a>
+      <a class="video-card hidden" href="https://youtu.be/DoY4sIuGMzU" target="_blank" rel="noopener">
+        <div class="video-thumb"><img src="https://img.youtube.com/vi/DoY4sIuGMzU/mqdefault.jpg" alt="Aether and Iron" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+        <div class="video-info">
+          <p class="video-title">Test Aether and Iron — Gameplay Vidéo FR</p>
+          <p class="video-desc">Un RPG narratif à la Disco Elysium où l'on combat en voiture dans un univers unique.</p>
+          <div class="video-meta"><span class="tag tag-test">Test</span><span>Aether and Iron</span></div>
+        </div>
+      </a>
 
-        <a id="blake-manor" class="video-card" href="https://youtu.be/dwuYf5HIyOU" target="_blank" rel="noopener">
-          <div class="video-thumb"><img src="https://img.youtube.com/vi/dwuYf5HIyOU/mqdefault.jpg" alt="Blake Manor" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
-          <div class="video-info">
-            <p class="video-title">Test The Séance of Blake Manor — Enquête Victorienne</p>
-            <p class="video-desc">Aventure narrative à la première personne et enquête dans un manoir victorien.</p>
-            <div class="video-meta"><span class="tag tag-test">Test</span><span>Blake Manor</span></div>
-          </div>
-        </a>
+      <a class="video-card hidden" href="https://youtu.be/dwuYf5HIyOU" target="_blank" rel="noopener">
+        <div class="video-thumb"><img src="https://img.youtube.com/vi/dwuYf5HIyOU/mqdefault.jpg" alt="Blake Manor" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+        <div class="video-info">
+          <p class="video-title">Test The Séance of Blake Manor — Enquête Victorienne</p>
+          <p class="video-desc">Aventure narrative à la première personne et enquête dans un manoir victorien.</p>
+          <div class="video-meta"><span class="tag tag-test">Test</span><span>Blake Manor</span></div>
+        </div>
+      </a>
 
-        <a id="foundation" class="video-card" href="https://youtu.be/RQAGFvoOGUQ" target="_blank" rel="noopener">
-          <div class="video-thumb"><img src="https://img.youtube.com/vi/RQAGFvoOGUQ/mqdefault.jpg" alt="Foundation" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
-          <div class="video-info">
-            <p class="video-title">FOUNDATION FR | L'essentiel pour une Cité Optimisée</p>
-            <p class="video-desc">Posez les fondations solides de votre économie pour bâtir un empire médiéval pérenne.</p>
-            <div class="video-meta"><span class="tag tag-guide">Guide</span><span>Foundation</span></div>
-          </div>
-        </a>
+      <a class="video-card hidden" href="https://youtu.be/RQAGFvoOGUQ" target="_blank" rel="noopener">
+        <div class="video-thumb"><img src="https://img.youtube.com/vi/RQAGFvoOGUQ/mqdefault.jpg" alt="Foundation" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+        <div class="video-info">
+          <p class="video-title">FOUNDATION FR | L'essentiel pour une Cité Optimisée</p>
+          <p class="video-desc">Posez les fondations solides de votre économie pour bâtir un empire médiéval pérenne.</p>
+          <div class="video-meta"><span class="tag tag-guide">Guide</span><span>Foundation</span></div>
+        </div>
+      </a>
 
-        <a id="manor-lords" class="video-card" href="https://youtu.be/7Lde4aejgqY" target="_blank" rel="noopener">
-          <div class="video-thumb"><img src="https://img.youtube.com/vi/7Lde4aejgqY/mqdefault.jpg" alt="Manor Lords" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
-          <div class="video-info">
-            <p class="video-title">Manor Lords – Bien Débuter sa Ville Médiévale</p>
-            <p class="video-desc">Guide débutant en français pour gérer au mieux sa colonie et son économie.</p>
-            <div class="video-meta"><span class="tag tag-guide">Guide</span><span>Manor Lords</span></div>
-          </div>
-        </a>
+      <a class="video-card hidden" href="https://youtu.be/7Lde4aejgqY" target="_blank" rel="noopener">
+        <div class="video-thumb"><img src="https://img.youtube.com/vi/7Lde4aejgqY/mqdefault.jpg" alt="Manor Lords" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+        <div class="video-info">
+          <p class="video-title">Manor Lords – Bien Débuter sa Ville Médiévale</p>
+          <p class="video-desc">Guide débutant en français pour gérer au mieux sa colonie et son économie.</p>
+          <div class="video-meta"><span class="tag tag-guide">Guide</span><span>Manor Lords</span></div>
+        </div>
+      </a>
 
-      </div>
+    </div>
+
+    <!-- BOUTON DÉROULANT -->
+    <div class="more-btn-container">
+      <button class="toggle-videos-btn" id="toggleVideosBtn">Afficher toutes les vidéos (+11)</button>
     </div>
   </section>
 
@@ -336,74 +353,36 @@
     </div>
     <p class="footer-copy">© 2026 Ariagamingfr — Tous droits réservés.</p>
 
-    <!-- COMPTEUR DE VISITEURS -->
     <p style="font-size: 0.75rem; color: #888; margin-top: 0.6rem;">
       Visites : <span id="visitor-count">Chargement...</span>
     </p>
   </footer>
 
-  <!-- SCRIPT DU CARROUSEL ET COMPTEUR -->
+  <!-- SCRIPTS -->
   <script>
+    // GESTION DE L'AFFICHAGE DES VIDÉOS
     document.addEventListener("DOMContentLoaded", function() {
-      const track = document.getElementById('carouselTrack');
-      const prevBtn = document.getElementById('prevBtn');
-      const nextBtn = document.getElementById('nextBtn');
-      const cards = document.querySelectorAll('.video-card');
-      const totalCards = cards.length;
-      let currentIndex = 0;
+      const toggleBtn = document.getElementById('toggleVideosBtn');
+      const hiddenCards = document.querySelectorAll('.video-card.hidden');
+      let isExpanded = false;
 
-      function getVisibleCards() {
-        if (window.innerWidth <= 580) return 1;
-        if (window.innerWidth <= 880) return 2;
-        return 3;
-      }
+      toggleBtn.addEventListener('click', function() {
+        isExpanded = !isExpanded;
+        hiddenCards.forEach(card => {
+          if (isExpanded) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
 
-      function updateCarousel() {
-        const visibleCards = getVisibleCards();
-        const maxIndex = totalCards - visibleCards;
-        
-        if (currentIndex > maxIndex) currentIndex = maxIndex;
-        if (currentIndex < 0) currentIndex = 0;
-
-        // Calcul dynamique en pourcentage
-        let percentage = 100 / visibleCards;
-        let gapOffset = (currentIndex * 1.2) / visibleCards; // gère l'écartement des cartes
-        
-        track.style.transform = `translateX(calc(-${currentIndex * percentage}% - ${gapOffset}rem))`;
-      }
-
-      nextBtn.addEventListener('click', () => {
-        const visibleCards = getVisibleCards();
-        if (currentIndex < totalCards - visibleCards) {
-          currentIndex++;
+        if (isExpanded) {
+          toggleBtn.textContent = 'Réduire la liste';
         } else {
-          currentIndex = 0;
+          toggleBtn.textContent = `Afficher toutes les vidéos (+${hiddenCards.length})`;
+          document.getElementById('videos').scrollIntoView({ behavior: 'smooth' });
         }
-        updateCarousel();
       });
-
-      prevBtn.addEventListener('click', () => {
-        const visibleCards = getVisibleCards();
-        if (currentIndex > 0) {
-          currentIndex--;
-        } else {
-          currentIndex = totalCards - visibleCards;
-        }
-        updateCarousel();
-      });
-
-      window.addEventListener('resize', updateCarousel);
-
-      // Défilement automatique toutes les 5s
-      let autoSlide = setInterval(() => { nextBtn.click(); }, 5000);
-
-      const wrapper = document.getElementById('carouselWrapper');
-      wrapper.addEventListener('mouseenter', () => clearInterval(autoSlide));
-      wrapper.addEventListener('mouseleave', () => {
-        autoSlide = setInterval(() => { nextBtn.click(); }, 5000);
-      });
-      
-      updateCarousel();
     });
 
     // COMPTEUR DE VISITES
