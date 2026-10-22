@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ariagamingfr — Guides, Tests & Gameplay en français</title>
-  <meta name="description" content="Ariagamingfr — Tests, guides et gameplay en français. Retrouvez toutes mes vidéos sur YouTube et pour ne rien rater de mes recommandations (et échanger sur nos coups de cœur du moment), rejoignez le groupe de curation Steam">
+  <meta name="description" content="Ariagamingfr — Tests, guides et gameplay en français. Retrouvez toutes mes vidéos sur YouTube et pour ne rien rater de mes recommandations, rejoignez le groupe de curation Steam.">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Ariagamingfr — Gaming YouTube & Tests">
   <meta property="og:description" content="Tests, guides et gameplay par Ariagamingfr — France">
@@ -93,26 +93,24 @@
 
     /* SECTIONS */
     .section { max-width: 1000px; margin: 0 auto; padding: 3rem 1.5rem; background: var(--box-bg); border: 1px solid var(--line); margin-bottom: 2rem; border-radius: var(--radius); }
-    .section-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--line); gap: 1rem; }
+    .section-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--line); gap: 1rem; }
     .section-title { font-size: 1.4rem; font-weight: 600; color: #222; }
     .section-title .dot { color: var(--accent); }
     .see-all { font-size: 0.85rem; font-weight: 600; color: var(--muted); text-decoration: none; transition: color .2s; }
     .see-all:hover { color: var(--accent); }
 
-    /* TAGS */
-    .tag { font-size: 0.68rem; padding: 2px 6px; border-radius: 2px; font-weight: 600; text-transform: uppercase; background: #eee; color: #555; }
-    .tag-test { background: #fdf2f2; color: #a91e1e; }
-    .tag-guide { background: #fdf6ec; color: #9e5b00; }
-    .tag-actu, .tag-preview { background: #ebf3fc; color: #1557b0; }
-    .tag-decouverte { background: #f3f0fd; color: #5935d8; }
-    .tag-walkthrough { background: #edf9f0; color: #1e7e34; }
+    /* CARROUSEL STYLES */
+    .carousel-controls { display: flex; gap: 0.5rem; align-items: center; }
+    .carousel-btn { background: #fafafa; border: 1px solid var(--line); border-radius: var(--radius); color: #333; font-size: 1.2rem; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; user-select: none; }
+    .carousel-btn:hover { border-color: var(--accent); color: var(--accent); background: #fff; }
+    
+    .carousel-wrapper { overflow: hidden; position: relative; width: 100%; }
+    .carousel-track { display: flex; transition: transform 0.4s ease-in-out; gap: 1.2rem; width: 100%; }
 
-    /* VIDEOS */
-    .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
-    @media (max-width: 880px) { .video-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 580px) { .video-grid { grid-template-columns: 1fr; } }
+    .video-card { flex: 0 0 calc((100% - 2.4rem) / 3); display: flex; flex-direction: column; text-decoration: none; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #fff; transition: border-color .2s; }
+    @media (max-width: 880px) { .video-card { flex: 0 0 calc((100% - 1.2rem) / 2); } }
+    @media (max-width: 580px) { .video-card { flex: 0 0 100%; } }
 
-    .video-card { display: flex; flex-direction: column; text-decoration: none; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #fff; transition: border-color .2s; }
     .video-card:hover { border-color: var(--accent); }
     .video-thumb { aspect-ratio: 16/9; background: #eee; position: relative; overflow: hidden; }
     .video-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -124,11 +122,13 @@
     .video-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.45; margin-bottom: 0.8rem; }
     .video-meta { margin-top: auto; display: flex; align-items: center; justify-content: space-between; font-size: 0.72rem; color: var(--muted); padding-top: 0.6rem; border-top: 1px solid var(--line); }
 
-    /* MENTIONS LEGALES */
-    .legal { display: none; max-width: 720px; margin: 1rem auto; padding: 2rem; background: var(--box-bg); border: 1px solid var(--line); border-radius: var(--radius); }
-    .legal h2 { font-size: 1.3rem; margin-bottom: 0.8rem; }
-    .legal h3 { font-size: 0.78rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px; margin: 1.2rem 0 0.3rem; }
-    .legal p { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.4rem; }
+    /* TAGS */
+    .tag { font-size: 0.68rem; padding: 2px 6px; border-radius: 2px; font-weight: 600; text-transform: uppercase; background: #eee; color: #555; }
+    .tag-test { background: #fdf2f2; color: #a91e1e; }
+    .tag-guide { background: #fdf6ec; color: #9e5b00; }
+    .tag-actu, .tag-preview { background: #ebf3fc; color: #1557b0; }
+    .tag-decouverte { background: #f3f0fd; color: #5935d8; }
+    .tag-walkthrough { background: #edf9f0; color: #1e7e34; }
 
     /* FOOTER */
     footer { border-top: 1px solid var(--line); padding: 2rem 1.5rem; text-align: center; background: #2b2b2b; color: #aaa; margin-top: 3rem; }
@@ -137,11 +137,6 @@
     .footer-links a:hover { color: #fff; }
     .footer-copy { font-size: 0.75rem; color: #888; }
   </style>
-
-  <!-- DONNÉES STRUCTURÉES VIDÉOS (inchangées) -->
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"VideoObject","name":"Silver Pines : Le nouveau survival horror indépendant entre Twin Peaks et Silent Hill","description":"Découvrez ma présentation et avis sur Silver Pines (Wych Elm / Team17), un survival horror metroidvania à l'ambiance unique inspirée de Twin Peaks.","thumbnailUrl":"https://img.youtube.com/vi/1e4DRMy1o7A/maxresdefault.jpg","uploadDate":"2026-08-22T08:00:00+02:00","contentUrl":"https://ariagamingfr.github.io/mon-site-ariagamingfr/#silver-pines","embedUrl":"https://www.youtube.com/embed/1e4DRMy1o7A"}
-  </script>
 </head>
 <body>
 
@@ -150,8 +145,7 @@
     <a class="logo" href="#">Aria<span>gaming</span>fr</a>
     <div class="nav-links">
       <a href="#videos">Vidéos</a>
-      <a href="#apropos">À propos</a>
-      <a href="#" onclick="toggleLegal(event)">Mentions légales</a>
+      <a href="https://medium.com/@ariagamingfr" target="_blank">Articles</a>
     </div>
   </nav>
 
@@ -189,46 +183,151 @@
     <div class="stat"><span class="stat-n">4</span><span class="stat-l">Tests écrits</span></div>
   </div>
 
-  <!-- VIDEOS -->
+  <!-- SECTION VIDEOS AVEC CARROUSEL -->
   <section class="section" id="videos">
     <div class="section-head">
-      <h2 class="section-title">Mes vidéos récentes<span class="dot">.</span></h2>
-      <a class="see-all" href="https://www.youtube.com/@ariagamingfr" target="_blank" rel="noopener">Voir sur YouTube →</a>
+      <h2 class="section-title">Mes vidéos<span class="dot">.</span></h2>
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="prevBtn" title="Précédent">‹</button>
+        <button class="carousel-btn" id="nextBtn" title="Suivant">›</button>
+        <a class="see-all" href="https://www.youtube.com/@ariagamingfr" target="_blank" rel="noopener" style="margin-left: 0.5rem;">YouTube →</a>
+      </div>
     </div>
 
-    <div class="video-grid">
+    <div class="carousel-wrapper" id="carouselWrapper">
+      <div class="carousel-track" id="carouselTrack">
 
-      <a id="servant-of-the-lake" class="video-card" href="https://youtu.be/2HwAAdiRI8o" target="_blank" rel="noopener">
-        <div class="video-thumb"><img src="https://img.youtube.com/vi/2HwAAdiRI8o/mqdefault.jpg" alt="Servant of the Lake Walkthrough" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
-        <div class="video-info">
-          <p class="video-title">Servant of the Lake FR (Rusty Lake) - Jour 1 (Walkthrough)</p>
-          <p class="video-desc">Solution complète du Jour 1 : énigmes, service du thé et fouille du grenier.</p>
-          <div class="video-meta"><span class="tag tag-walkthrough">Walkthrough</span><span>Rusty Lake</span></div>
-        </div>
-      </a>
+        <a id="servant-of-the-lake" class="video-card" href="https://youtu.be/2HwAAdiRI8o" target="_blank" rel="noopener">
+          <div class="video-thumb"><img src="https://img.youtube.com/vi/2HwAAdiRI8o/mqdefault.jpg" alt="Servant of the Lake Walkthrough" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+          <div class="video-info">
+            <p class="video-title">Servant of the Lake FR (Rusty Lake) - Jour 1 (Walkthrough)</p>
+            <p class="video-desc">Solution complète du Jour 1 : énigmes des bougies, service du thé et fouille du grenier.</p>
+            <div class="video-meta"><span class="tag tag-walkthrough">Walkthrough</span><span>Rusty Lake</span></div>
+          </div>
+        </a>
 
-      <a id="blood-dawnwalker" class="video-card" href="https://youtu.be/lHpOUpbc36w" target="_blank" rel="noopener">
-        <div class="video-thumb"><img src="https://img.youtube.com/vi/lHpOUpbc36w/mqdefault.jpg" alt="The Blood of Dawnwalker Guide" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
-        <div class="video-info">
-          <p class="video-title">The Blood of Dawnwalker : Guide du Système de Combat</p>
-          <p class="video-desc">Parades directionnelles, esquive, alternance jour/nuit et compétences.</p>
-          <div class="video-meta"><span class="tag tag-guide">Guide</span><span>Dawnwalker</span></div>
-        </div>
-      </a>
+        <a id="blood-dawnwalker" class="video-card" href="https://youtu.be/lHpOUpbc36w" target="_blank" rel="noopener">
+          <div class="video-thumb"><img src="https://img.youtube.com/vi/lHpOUpbc36w/mqdefault.jpg" alt="The Blood of Dawnwalker Guide" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+          <div class="video-info">
+            <p class="video-title">The Blood of Dawnwalker : Guide du Système de Combat</p>
+            <p class="video-desc">Parades directionnelles, esquive, alternance jour/nuit et compétences vampiriques.</p>
+            <div class="video-meta"><span class="tag tag-guide">Guide</span><span>Dawnwalker</span></div>
+          </div>
+        </a>
 
-      <a id="manor-lords" class="video-card" href="https://youtu.be/7Lde4aejgqY" target="_blank" rel="noopener">
-        <div class="video-thumb"><img src="https://img.youtube.com/vi/7Lde4aejgqY/mqdefault.jpg" alt="Manor Lords" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
-        <div class="video-info">
-          <p class="video-title">Manor Lords – Bien débuter sa ville médiévale | Guide FR</p>
-          <p class="video-desc">Guide débutant en français pour gérer au mieux sa colonie et son économie.</p>
-          <div class="video-meta"><span class="tag tag-guide">Guide</span><span>Manor Lords</span></div>
-        </div>
-      </a>
+        <a id="plague-tale-resonance" class="video-card" href="https://youtu.be/vT4rJHYzLBs" target="_blank" rel="noopener">
+          <div class="video-thumb"><img src="https://img.youtube.com/vi/vT4rJHYzLBs/mqdefault.jpg" alt="Resonance A Plague Tale Legacy Guide" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+          <div class="video-info">
+            <p class="video-title">Resonance: A Plague Tale Legacy | Guide Complet Combat</p>
+            <p class="video-desc">Le nouveau gameplay axé sur l'action, les parades de Sofia, le grappin et l'ambiance horrifique.</p>
+            <div class="video-meta"><span class="tag tag-guide">Guide</span><span>A Plague Tale</span></div>
+          </div>
+        </a>
 
+        <a id="silver-pines" class="video-card" href="https://youtu.be/1e4DRMy1o7A" target="_blank" rel="noopener">
+          <div class="video-thumb"><img src="https://img.youtube.com/vi/1e4DRMy1o7A/mqdefault.jpg" alt="Silver Pines Survival Horror" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+          <div class="video-info">
+            <p class="video-title">Silver Pines : Survival Horror entre Twin Peaks et Silent Hill</p>
+            <p class="video-desc">Un survival horror metroidvania angoissant développé par Wych Elm et édité par Team17.</p>
+            <div class="video-meta"><span class="tag tag-decouverte">Découverte</span><span>Silver Pines</span></div>
+          </div>
+        </a>
+
+        <a id="manor-lords-maj" class="video-card" href="https://youtu.be/240KL1T93CY" target="_blank" rel="noopener">
+          <div class="video-thumb"><img src="https://img.youtube.com/vi/240KL1T93CY/mqdefault.jpg" alt="Manor Lords Mise à Jour Guide" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+          <div class="video-info">
+            <p class="video-title">Manor Lords : Guide Nouvelle Mise à Jour (Avoine, Vaches...)</p>
+            <p class="video-desc">Cultures d'avoine, bétail en hiver, nouvelles constructions et logistique améliorée.</p>
+            <div class="video-meta"><span class="tag tag-guide">Guide</span><span>Manor Lords</span></div>
+          </div>
+        </a>
+
+        <a id="nouvelle-video" class="video-card" href="https://youtu.be/2CEcLqLKQ50" target="_blank" rel="noopener">
+          <div class="video-thumb"><img src="https://img.youtube.com/vi/2CEcLqLKQ50/mqdefault.jpg" alt="The Witcher 3 Remastered" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+          <div class="video-info">
+            <p class="video-title">The Witcher 3 Remastered : Mise à jour gratuite & extension</p>
+            <p class="video-desc">The Witcher 3 revient avec une importante mise à jour gratuite et du nouveau contenu.</p>
+            <div class="video-meta"><span class="tag tag-preview">Preview</span><span>The Witcher 3</span></div>
+          </div>
+        </a>
+
+        <a id="going-medieval" class="video-card" href="https://youtu.be/EgsuNLhmRHM" target="_blank" rel="noopener">
+          <div class="video-thumb"><img src="https://img.youtube.com/vi/EgsuNLhmRHM/mqdefault.jpg" alt="Going Medieval 1.0 Guide Débutant" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+          <div class="video-info">
+            <p class="video-title">Going Medieval 1.0 — Guide Débutant FR</p>
+            <p class="video-desc">Tout ce qu'il faut savoir pour bien démarrer ta colonie médiévale dans la version 1.0.</p>
+            <div class="video-meta"><span class="tag tag-guide">Guide</span><span>Going Medieval</span></div>
+          </div>
+        </a>
+
+        <a id="life-below" class="video-card" href="https://youtu.be/bqp1fVR527g" target="_blank" rel="noopener">
+          <div class="video-thumb"><img src="https://img.youtube.com/vi/bqp1fVR527g/mqdefault.jpg" alt="Life Below" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+          <div class="video-info">
+            <p class="video-title">Life Below : Guide et Avis City-Builder Sous-Marin</p>
+            <p class="video-desc">Avis et guide sur Life Below, le city-builder sous-marin indé — ambiance chill et gestion.</p>
+            <div class="video-meta"><span class="tag tag-test">Test</span><span>Life Below</span></div>
+          </div>
+        </a>
+
+        <a id="subnautica2" class="video-card" href="https://youtu.be/ISSc8oM8jXw" target="_blank" rel="noopener">
+          <div class="video-thumb"><img src="https://img.youtube.com/vi/ISSc8oM8jXw/mqdefault.jpg" alt="Subnautica 2" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+          <div class="video-info">
+            <p class="video-title">Subnautica 2 : Guide de Démarrage</p>
+            <p class="video-desc">Guide de démarrage : ressources essentielles, crafts et conseils pour survivre sous les mers.</p>
+            <div class="video-meta"><span class="tag tag-guide">Guide</span><span>Subnautica 2</span></div>
+          </div>
+        </a>
+
+        <a id="aska" class="video-card" href="https://youtu.be/TXwnMiNSGrE" target="_blank" rel="noopener">
+          <div class="video-thumb"><img src="https://img.youtube.com/vi/TXwnMiNSGrE/mqdefault.jpg" alt="ASKA" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+          <div class="video-info">
+            <p class="video-title">ASKA FR | Bien Démarrer sa Tribu Viking</p>
+            <p class="video-desc">Comment bien démarrer ta tribu viking, gérer tes ressources et progresser rapidement.</p>
+            <div class="video-meta"><span class="tag tag-guide">Guide</span><span>ASKA</span></div>
+          </div>
+        </a>
+
+        <a id="aether-iron" class="video-card" href="https://youtu.be/DoY4sIuGMzU" target="_blank" rel="noopener">
+          <div class="video-thumb"><img src="https://img.youtube.com/vi/DoY4sIuGMzU/mqdefault.jpg" alt="Aether and Iron" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+          <div class="video-info">
+            <p class="video-title">Test Aether and Iron — Gameplay Vidéo FR</p>
+            <p class="video-desc">Un RPG narratif à la Disco Elysium où l'on combat en voiture dans un univers unique.</p>
+            <div class="video-meta"><span class="tag tag-test">Test</span><span>Aether and Iron</span></div>
+          </div>
+        </a>
+
+        <a id="blake-manor" class="video-card" href="https://youtu.be/dwuYf5HIyOU" target="_blank" rel="noopener">
+          <div class="video-thumb"><img src="https://img.youtube.com/vi/dwuYf5HIyOU/mqdefault.jpg" alt="Blake Manor" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+          <div class="video-info">
+            <p class="video-title">Test The Séance of Blake Manor — Enquête Victorienne</p>
+            <p class="video-desc">Aventure narrative à la première personne et enquête dans un manoir victorien.</p>
+            <div class="video-meta"><span class="tag tag-test">Test</span><span>Blake Manor</span></div>
+          </div>
+        </a>
+
+        <a id="foundation" class="video-card" href="https://youtu.be/RQAGFvoOGUQ" target="_blank" rel="noopener">
+          <div class="video-thumb"><img src="https://img.youtube.com/vi/RQAGFvoOGUQ/mqdefault.jpg" alt="Foundation" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+          <div class="video-info">
+            <p class="video-title">FOUNDATION FR | L'essentiel pour une Cité Optimisée</p>
+            <p class="video-desc">Posez les fondations solides de votre économie pour bâtir un empire médiéval pérenne.</p>
+            <div class="video-meta"><span class="tag tag-guide">Guide</span><span>Foundation</span></div>
+          </div>
+        </a>
+
+        <a id="manor-lords" class="video-card" href="https://youtu.be/7Lde4aejgqY" target="_blank" rel="noopener">
+          <div class="video-thumb"><img src="https://img.youtube.com/vi/7Lde4aejgqY/mqdefault.jpg" alt="Manor Lords" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+          <div class="video-info">
+            <p class="video-title">Manor Lords – Bien Débuter sa Ville Médiévale</p>
+            <p class="video-desc">Guide débutant en français pour gérer au mieux sa colonie et son économie.</p>
+            <div class="video-meta"><span class="tag tag-guide">Guide</span><span>Manor Lords</span></div>
+          </div>
+        </a>
+
+      </div>
     </div>
   </section>
 
-<!-- FOOTER -->
+  <!-- FOOTER ET COMPTEUR DE VISITEURS -->
   <footer>
     <div class="footer-links">
       <a href="https://www.youtube.com/@ariagamingfr" target="_blank" rel="noopener">YouTube</a>
@@ -236,27 +335,89 @@
       <a href="https://medium.com/@ariagamingfr" target="_blank" rel="noopener">Medium</a>
     </div>
     <p class="footer-copy">© 2026 Ariagamingfr — Tous droits réservés.</p>
-    <!-- Compteur de visiteurs -->
-    <p style="font-size: 0.7rem; color: #777; margin-top: 0.5rem;">
-      Visiteurs : <span id="visitor-count">Chargement...</span>
+
+    <!-- COMPTEUR DE VISITEURS -->
+    <p style="font-size: 0.75rem; color: #888; margin-top: 0.6rem;">
+      Visites : <span id="visitor-count">Chargement...</span>
     </p>
   </footer>
 
-  <!-- Script pour incrémenter et afficher le compteur -->
+  <!-- SCRIPT DU CARROUSEL ET COMPTEUR -->
   <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const track = document.getElementById('carouselTrack');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const cards = document.querySelectorAll('.video-card');
+      const totalCards = cards.length;
+      let currentIndex = 0;
+
+      function getVisibleCards() {
+        if (window.innerWidth <= 580) return 1;
+        if (window.innerWidth <= 880) return 2;
+        return 3;
+      }
+
+      function updateCarousel() {
+        const visibleCards = getVisibleCards();
+        const maxIndex = totalCards - visibleCards;
+        
+        if (currentIndex > maxIndex) currentIndex = maxIndex;
+        if (currentIndex < 0) currentIndex = 0;
+
+        // Calcul dynamique en pourcentage
+        let percentage = 100 / visibleCards;
+        let gapOffset = (currentIndex * 1.2) / visibleCards; // gère l'écartement des cartes
+        
+        track.style.transform = `translateX(calc(-${currentIndex * percentage}% - ${gapOffset}rem))`;
+      }
+
+      nextBtn.addEventListener('click', () => {
+        const visibleCards = getVisibleCards();
+        if (currentIndex < totalCards - visibleCards) {
+          currentIndex++;
+        } else {
+          currentIndex = 0;
+        }
+        updateCarousel();
+      });
+
+      prevBtn.addEventListener('click', () => {
+        const visibleCards = getVisibleCards();
+        if (currentIndex > 0) {
+          currentIndex--;
+        } else {
+          currentIndex = totalCards - visibleCards;
+        }
+        updateCarousel();
+      });
+
+      window.addEventListener('resize', updateCarousel);
+
+      // Défilement automatique toutes les 5s
+      let autoSlide = setInterval(() => { nextBtn.click(); }, 5000);
+
+      const wrapper = document.getElementById('carouselWrapper');
+      wrapper.addEventListener('mouseenter', () => clearInterval(autoSlide));
+      wrapper.addEventListener('mouseleave', () => {
+        autoSlide = setInterval(() => { nextBtn.click(); }, 5000);
+      });
+      
+      updateCarousel();
+    });
+
+    // COMPTEUR DE VISITES
     async function trackVisitor() {
       try {
-        // Utilisation de l'API publique CounterAPI (remplacez 'ariagamingfr' par un identifiant unique si besoin)
         let response = await fetch('https://api.counterapi.dev/v1/ariagamingfr/site/hit');
         let data = await response.json();
         document.getElementById('visitor-count').textContent = data.count.toLocaleString('fr-FR');
       } catch (error) {
-        // En cas de blocage par un bloqueur de pub, on cache proprement la ligne
         document.getElementById('visitor-count').parentElement.style.display = 'none';
       }
     }
     trackVisitor();
   </script>
 
-  </body>
+</body>
 </html>
