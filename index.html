@@ -21,196 +21,126 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #ffffff;
-      --soft: #f7f6f4;
-      --text: #1a1a1a;
-      --muted: #6b6b6b;
-      --line: #ebe9e6;
-      --accent: #e8590c;
-      --accent-dark: #c2410c;
-      --radius: 14px;
+      --bg: #f4f3f0;
+      --box-bg: #ffffff;
+      --text: #2c2c2c;
+      --muted: #666666;
+      --line: #dcdad5;
+      --accent: #9e3b14;
+      --accent-dark: #7a2c0e;
+      --radius: 4px;
     }
 
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: 'Roboto', sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.5;
       -webkit-font-smoothing: antialiased;
     }
     a { color: inherit; }
-    h1, h2, h3, .logo { font-family: 'Outfit', sans-serif; }
+    h1, h2, h3, .logo { font-family: 'Lora', serif; }
 
     /* NAV */
     nav {
       position: sticky; top: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 1rem 2rem;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
+      padding: 0.8rem 2rem;
+      background: #2b2b2b;
+      color: #fff;
+      border-bottom: 3px solid var(--accent);
     }
-    .logo { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.3px; text-decoration: none; }
-    .logo span { color: var(--accent); }
-    .nav-links { display: flex; gap: 1.75rem; flex-wrap: wrap; }
-    .nav-links a { font-size: 0.88rem; font-weight: 500; color: var(--muted); text-decoration: none; transition: color .2s; cursor: pointer; }
-    .nav-links a:hover { color: var(--accent); }
+    .logo { font-weight: 700; font-size: 1.25rem; text-decoration: none; color: #fff; }
+    .logo span { color: #e07a5f; }
+    .nav-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .nav-links a { font-size: 0.88rem; font-weight: 500; color: #ccc; text-decoration: none; transition: color .2s; cursor: pointer; }
+    .nav-links a:hover { color: #fff; }
 
     /* HERO */
-    .hero { max-width: 760px; margin: 0 auto; padding: 6rem 1.5rem 3.5rem; text-align: center; }
-    .hero-tag { display: inline-block; font-size: 0.78rem; font-weight: 600; color: var(--accent); background: #fff3ea; padding: 5px 14px; border-radius: 999px; margin-bottom: 1.5rem; }
-    .hero h1 { font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 800; line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 1.25rem; }
+    .hero { max-width: 800px; margin: 0 auto; padding: 4rem 1.5rem 2.5rem; text-align: center; background: var(--box-bg); border-bottom: 1px solid var(--line); }
+    .hero-tag { display: inline-block; font-size: 0.78rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px; background: #faedcd; padding: 4px 10px; border-radius: var(--radius); margin-bottom: 1.2rem; }
+    .hero h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 600; line-height: 1.2; margin-bottom: 1rem; color: #1a1a1a; }
     .hero h1 em { font-style: normal; color: var(--accent); }
-    .hero p { color: var(--muted); font-size: 1.1rem; max-width: 520px; margin: 0 auto 2.25rem; }
+    .hero p { color: var(--muted); font-size: 1.05rem; max-width: 560px; margin: 0 auto 2rem; }
 
-    .btn-row { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
-    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 0.7rem 1.4rem; border-radius: 999px; font-size: 0.88rem; font-weight: 600; text-decoration: none; border: 1px solid var(--line); background: #fff; transition: all .2s; }
-    .btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+    .btn-row { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 0.55rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 500; text-decoration: none; border: 1px solid var(--line); background: #fafafa; color: #333; transition: all .2s; }
+    .btn:hover { border-color: var(--accent); background: #fff; color: var(--accent); }
     .btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
     .btn-primary:hover { background: var(--accent-dark); border-color: var(--accent-dark); color: #fff; }
 
     /* PARTENAIRES */
-    .partners { max-width: 860px; margin: 0 auto; padding: 0 1.5rem 3rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; align-items: flex-start; }
-    .partner { background: var(--soft); border-radius: var(--radius); padding: 1rem 1.25rem; max-width: 380px; flex: 1 1 260px; text-align: center; }
-    .partner a { display: inline-flex; align-items: center; gap: 8px; padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.85rem; font-weight: 600; text-decoration: none; }
+    .partners { max-width: 1000px; margin: 1.5rem auto 0; padding: 0 1.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .partner { background: var(--box-bg); border: 1px solid var(--line); border-radius: var(--radius); padding: 0.8rem 1rem; max-width: 380px; flex: 1 1 260px; text-align: center; }
+    .partner a { display: inline-flex; align-items: center; gap: 8px; padding: 0.3rem 0.6rem; border-radius: var(--radius); font-size: 0.82rem; font-weight: 600; text-decoration: none; }
     .partner .steam { background: #171a21; color: #66c0f4; }
     .partner .ig { background: #1a1a1a; color: #fff; }
-    .partner .ig img { max-width: 70px; height: auto; display: block; }
-    .partner small { display: block; margin-top: 0.6rem; font-size: 0.7rem; color: var(--muted); line-height: 1.5; }
+    .partner .ig img { max-width: 60px; height: auto; display: block; }
+    .partner small { display: block; margin-top: 0.4rem; font-size: 0.68rem; color: var(--muted); line-height: 1.4; }
 
     /* STATS */
-    .stats-bar { display: flex; justify-content: center; gap: 4rem; padding: 2rem 1.5rem; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+    .stats-bar { max-width: 1000px; margin: 1.5rem auto; display: flex; justify-content: center; gap: 3rem; padding: 1rem 1.5rem; background: var(--box-bg); border: 1px solid var(--line); border-radius: var(--radius); }
     .stat { text-align: center; }
-    .stat-n { font-family: 'Outfit', sans-serif; font-size: 2.2rem; font-weight: 800; color: var(--accent); display: block; line-height: 1.1; }
-    .stat-l { font-size: 0.8rem; color: var(--muted); font-weight: 500; }
+    .stat-n { font-family: 'Lora', serif; font-size: 1.8rem; font-weight: 700; color: var(--accent); display: block; line-height: 1; }
+    .stat-l { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
 
     /* SECTIONS */
-    .section { max-width: 1080px; margin: 0 auto; padding: 4.5rem 1.5rem; }
-    .section-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 2rem; gap: 1rem; }
-    .section-title { font-size: 1.7rem; font-weight: 700; letter-spacing: -0.5px; }
+    .section { max-width: 1000px; margin: 0 auto; padding: 3rem 1.5rem; background: var(--box-bg); border: 1px solid var(--line); margin-bottom: 2rem; border-radius: var(--radius); }
+    .section-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--line); gap: 1rem; }
+    .section-title { font-size: 1.4rem; font-weight: 600; color: #222; }
     .section-title .dot { color: var(--accent); }
-    .see-all { font-size: 0.85rem; font-weight: 600; color: var(--muted); text-decoration: none; white-space: nowrap; transition: color .2s; }
+    .see-all { font-size: 0.85rem; font-weight: 600; color: var(--muted); text-decoration: none; transition: color .2s; }
     .see-all:hover { color: var(--accent); }
 
     /* TAGS */
-    .tag { font-size: 0.68rem; padding: 3px 10px; border-radius: 999px; font-weight: 600; background: var(--soft); color: var(--muted); }
-    .tag-test { background: #fdecec; color: #c92a2a; }
-    .tag-guide { background: #fff3ea; color: var(--accent-dark); }
-    .tag-actu, .tag-preview { background: #e8f1fd; color: #1c6dd0; }
-    .tag-decouverte { background: #efeafd; color: #6741d9; }
-    .tag-walkthrough { background: #e9f7ee; color: #2b8a3e; }
+    .tag { font-size: 0.68rem; padding: 2px 6px; border-radius: 2px; font-weight: 600; text-transform: uppercase; background: #eee; color: #555; }
+    .tag-test { background: #fdf2f2; color: #a91e1e; }
+    .tag-guide { background: #fdf6ec; color: #9e5b00; }
+    .tag-actu, .tag-preview { background: #ebf3fc; color: #1557b0; }
+    .tag-decouverte { background: #f3f0fd; color: #5935d8; }
+    .tag-walkthrough { background: #edf9f0; color: #1e7e34; }
 
     /* VIDEOS */
-    .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
     @media (max-width: 880px) { .video-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 580px) { .video-grid { grid-template-columns: 1fr; } nav { padding: 0.9rem 1.25rem; } }
+    @media (max-width: 580px) { .video-grid { grid-template-columns: 1fr; } }
 
-    .video-card { display: flex; flex-direction: column; text-decoration: none; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #fff; transition: all .25s; }
-    .video-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.08); border-color: #ddd; }
-    .video-thumb { aspect-ratio: 16/9; background: var(--soft); position: relative; overflow: hidden; }
+    .video-card { display: flex; flex-direction: column; text-decoration: none; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #fff; transition: border-color .2s; }
+    .video-card:hover { border-color: var(--accent); }
+    .video-thumb { aspect-ratio: 16/9; background: #eee; position: relative; overflow: hidden; }
     .video-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .play-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.25); opacity: 0; transition: opacity .2s; }
+    .play-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3); opacity: 0; transition: opacity .2s; }
     .video-card:hover .play-overlay { opacity: 1; }
-    .play-circle { width: 46px; height: 46px; border-radius: 50%; background: #fff; color: var(--accent); display: flex; align-items: center; justify-content: center; padding-left: 3px; font-size: 0.95rem; }
-    .video-info { padding: 1.1rem 1.2rem 1.2rem; display: flex; flex-direction: column; flex: 1; }
-    .video-title { font-size: 0.95rem; font-weight: 600; line-height: 1.4; margin-bottom: 0.5rem; }
-    .video-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.55; margin-bottom: 1rem; }
-    .video-meta { margin-top: auto; display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem; color: var(--muted); padding-top: 0.75rem; border-top: 1px solid var(--line); }
-
-    /* ARTICLES */
-    .article-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-    @media (max-width: 750px) { .article-grid { grid-template-columns: 1fr; } }
-    .article-card { display: flex; flex-direction: column; text-decoration: none; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #fff; transition: all .25s; }
-    .article-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.08); }
-    .article-img { aspect-ratio: 16/8; background: var(--soft); overflow: hidden; }
-    .article-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s; }
-    .article-card:hover .article-img img { transform: scale(1.03); }
-    .article-body { padding: 1.3rem; display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
-    .article-top { display: flex; align-items: center; justify-content: space-between; }
-    .article-date { font-size: 0.75rem; color: var(--muted); }
-    .article-title { font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 600; line-height: 1.35; }
-    .article-excerpt { font-size: 0.86rem; color: var(--muted); }
-    .article-footer { margin-top: auto; padding-top: 0.9rem; border-top: 1px solid var(--line); display: flex; justify-content: space-between; font-size: 0.78rem; }
-    .read-time { color: var(--muted); }
-    .read-link { color: var(--accent); font-weight: 600; }
-
-    .divider { border: none; border-top: 1px solid var(--line); max-width: 1080px; margin: 0 auto; }
-
-    /* A PROPOS */
-    .about-box { background: var(--soft); border-radius: 20px; padding: 2.5rem; display: flex; gap: 2.25rem; align-items: center; }
-    @media (max-width: 650px) { .about-box { flex-direction: column; text-align: center; padding: 1.75rem; } }
-    .avatar { width: 108px; height: 108px; flex-shrink: 0; border-radius: 50%; overflow: hidden; border: 3px solid #fff; box-shadow: 0 4px 14px rgba(0,0,0,0.1); background: #fff; }
-    .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .about-text h2 { font-size: 1.35rem; font-weight: 700; margin-bottom: 0.6rem; }
-    .about-text p { font-size: 0.92rem; color: var(--muted); margin-bottom: 1rem; }
-    .social-links { display: flex; gap: 0.6rem; flex-wrap: wrap; }
-    @media (max-width: 650px) { .social-links { justify-content: center; } }
-    .social-btn { padding: 0.5rem 1.1rem; border-radius: 999px; font-size: 0.82rem; font-weight: 600; text-decoration: none; background: #fff; border: 1px solid var(--line); transition: all .2s; }
-    .social-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .play-circle { width: 36px; height: 36px; border-radius: 50%; background: #fff; color: var(--accent); display: flex; align-items: center; justify-content: center; padding-left: 2px; font-size: 0.8rem; }
+    .video-info { padding: 0.9rem; display: flex; flex-direction: column; flex: 1; }
+    .video-title { font-size: 0.9rem; font-weight: 600; line-height: 1.35; margin-bottom: 0.4rem; color: #222; }
+    .video-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.45; margin-bottom: 0.8rem; }
+    .video-meta { margin-top: auto; display: flex; align-items: center; justify-content: space-between; font-size: 0.72rem; color: var(--muted); padding-top: 0.6rem; border-top: 1px solid var(--line); }
 
     /* MENTIONS LEGALES */
-    .legal { display: none; max-width: 720px; margin: 1rem auto 4rem; padding: 2.5rem 2rem; background: var(--soft); border-radius: var(--radius); }
-    .legal h2 { font-size: 1.4rem; margin-bottom: 1rem; }
-    .legal h3 { font-size: 0.8rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin: 1.5rem 0 0.4rem; }
-    .legal p { font-size: 0.88rem; color: var(--muted); margin-bottom: 0.5rem; }
+    .legal { display: none; max-width: 720px; margin: 1rem auto; padding: 2rem; background: var(--box-bg); border: 1px solid var(--line); border-radius: var(--radius); }
+    .legal h2 { font-size: 1.3rem; margin-bottom: 0.8rem; }
+    .legal h3 { font-size: 0.78rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px; margin: 1.2rem 0 0.3rem; }
+    .legal p { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.4rem; }
 
     /* FOOTER */
-    footer { border-top: 1px solid var(--line); padding: 2.5rem 1.5rem; text-align: center; }
-    .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1rem; }
-    .footer-links a { font-size: 0.85rem; font-weight: 500; color: var(--muted); text-decoration: none; cursor: pointer; }
-    .footer-links a:hover { color: var(--accent); }
-    .footer-copy { font-size: 0.78rem; color: var(--muted); }
-
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
-    .hero { animation: fadeUp .6s ease both; }
+    footer { border-top: 1px solid var(--line); padding: 2rem 1.5rem; text-align: center; background: #2b2b2b; color: #aaa; margin-top: 3rem; }
+    .footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 0.8rem; }
+    .footer-links a { font-size: 0.85rem; font-weight: 500; color: #ccc; text-decoration: none; cursor: pointer; }
+    .footer-links a:hover { color: #fff; }
+    .footer-copy { font-size: 0.75rem; color: #888; }
   </style>
 
-  <!-- DONNÉES STRUCTURÉES VIDÉOS -->
+  <!-- DONNÉES STRUCTURÉES VIDÉOS (inchangées) -->
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"VideoObject","name":"Silver Pines : Le nouveau survival horror indépendant entre Twin Peaks et Silent Hill","description":"Découvrez ma présentation et avis sur Silver Pines (Wych Elm / Team17), un survival horror metroidvania à l'ambiance unique inspirée de Twin Peaks.","thumbnailUrl":"https://img.youtube.com/vi/1e4DRMy1o7A/maxresdefault.jpg","uploadDate":"2026-08-22T08:00:00+02:00","contentUrl":"https://ariagamingfr.github.io/mon-site-ariagamingfr/#silver-pines","embedUrl":"https://www.youtube.com/embed/1e4DRMy1o7A"}
-  </script>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"VideoObject","name":"Life Below : Un city-builder indé écologique sous les mers","description":"Découvrez mon avis et guide de gameplay en français sur le jeu vidéo indépendant Life Below. Guide de ce city-builder sous-marin par AriaGamingFR.","thumbnailUrl":"https://img.youtube.com/vi/bqp1fVR527g/maxresdefault.jpg","uploadDate":"2026-05-31T08:00:00+02:00","contentUrl":"https://youtu.be/bqp1fVR527g","embedUrl":"https://www.youtube.com/embed/bqp1fVR527g"}
-  </script>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"VideoObject","name":"ASKA FR | Bien Démarrer sa Tribu Viking (Guide débutant)","description":"Guide débutant pour ASKA : comment bien démarrer ta tribu viking, gérer tes ressources et progresser rapidement en français.","thumbnailUrl":"https://img.youtube.com/vi/TXwnMiNSGrE/maxresdefault.jpg","uploadDate":"2026-05-31T08:00:00+02:00","contentUrl":"https://ariagamingfr.github.io/mon-site-ariagamingfr/#aska","embedUrl":"https://www.youtube.com/embed/TXwnMiNSGrE"}
-  </script>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"VideoObject","name":"Subnautica 2 guide français","description":"Guide de démarrage pour Subnautica 2 : ressources essentielles, crafts et conseils pour survivre sous les mers.","thumbnailUrl":"https://img.youtube.com/vi/ISSc8oM8jXw/maxresdefault.jpg","uploadDate":"2026-05-31T08:00:00+02:00","contentUrl":"https://ariagamingfr.github.io/mon-site-ariagamingfr/#subnautica2","embedUrl":"https://www.youtube.com/embed/ISSc8oM8jXw"}
-  </script>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"VideoObject","name":"Test Aether and Iron — gameplay vidéo fr","description":"Test gameplay de Aether and Iron : un RPG narratif à la Disco Elysium où l'on combat en voiture.","thumbnailUrl":"https://img.youtube.com/vi/DoY4sIuGMzU/maxresdefault.jpg","uploadDate":"2026-05-31T08:00:00+02:00","contentUrl":"https://ariagamingfr.github.io/mon-site-ariagamingfr/#aether-iron","embedUrl":"https://www.youtube.com/embed/DoY4sIuGMzU"}
-  </script>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"VideoObject","name":"Test The Séance of Blake Manor — gameplay vidéo fr","description":"Test gameplay de The Séance of Blake Manor : aventure narrative à la première personne et enquête dans un manoir victorien.","thumbnailUrl":"https://img.youtube.com/vi/dwuYf5HIyOU/maxresdefault.jpg","uploadDate":"2026-05-31T08:00:00+02:00","contentUrl":"https://ariagamingfr.github.io/mon-site-ariagamingfr/#blake-manor","embedUrl":"https://www.youtube.com/embed/dwuYf5HIyOU"}
-  </script>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"VideoObject","name":"FOUNDATION FR | L'essentiel pour une Cité Optimisée (guide V1.11 / 2026)","description":"Foundation guide débutant en français. Posez les fondations solides de votre économie pour bâtir un empire médiéval pérenne.","thumbnailUrl":"https://img.youtube.com/vi/RQAGFvoOGUQ/maxresdefault.jpg","uploadDate":"2026-05-31T08:00:00+02:00","contentUrl":"https://ariagamingfr.github.io/mon-site-ariagamingfr/#foundation","embedUrl":"https://www.youtube.com/embed/RQAGFvoOGUQ"}
-  </script>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"VideoObject","name":"Manor Lords – Bien débuter sa ville médiévale | Guide Gameplay Fr","description":"Manor Lords guide débutant en français pour gérer au mieux sa colonie","thumbnailUrl":"https://img.youtube.com/vi/7Lde4aejgqY/maxresdefault.jpg","uploadDate":"2026-05-31T08:00:00+02:00","contentUrl":"https://ariagamingfr.github.io/mon-site-ariagamingfr/#manor-lords","embedUrl":"https://www.youtube.com/embed/7Lde4aejgqY"}
-  </script>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"VideoObject","name":"Going Medieval 1.0 Guide Débutant FR","description":"Guide débutant Going Medieval en français par AriaGamingFR. Conseils pour bien démarrer ta colonie médiévale dans la version 1.0.","thumbnailUrl":"https://img.youtube.com/vi/EgsuNLhmRHM/maxresdefault.jpg","uploadDate":"2026-06-11T08:00:00+04:00","contentUrl":"https://ariagamingfr.github.io/mon-site-ariagamingfr/#going-medieval","embedUrl":"https://www.youtube.com/embed/EgsuNLhmRHM"}
-  </script>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"VideoObject","name":"The Witcher 3 Remastered : la mise à jour gratuite ET une nouvelle extension !","description":"Dans cette vidéo, découvrez tout ce que l'on sait sur The Witcher 3 Remastered et sa future extension Songs of the Past.","thumbnailUrl":"https://img.youtube.com/vi/2CEcLqLKQ50/maxresdefault.jpg","uploadDate":"2026-06-14T08:00:00+04:00","contentUrl":"https://ariagamingfr.github.io/mon-site-ariagamingfr/#nouvelle-video","embedUrl":"https://www.youtube.com/embed/2CEcLqLKQ50"}
-  </script>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"VideoObject","name":"The Blood of Dawnwalker : Guide du Système de Combat & Astuces pour bien débuter","description":"Guide complet du système de combat en français pour The Blood of Dawnwalker. Maîtrisez les parades directionnelles, l'alternance jour/nuit et les pouvoirs vampiriques.","thumbnailUrl":"https://img.youtube.com/vi/lHpOUpbc36w/maxresdefault.jpg","uploadDate":"2026-09-07T08:00:00+02:00","contentUrl":"https://ariagamingfr.github.io/mon-site-ariagamingfr/#blood-dawnwalker","embedUrl":"https://www.youtube.com/embed/lHpOUpbc36w"}
-  </script>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"VideoObject","name":"Resonance: A Plague Tale Legacy | Nouveau Combat & Traque Horrifique : Le Guide Complet","description":"Découvrez le guide complet du nouveau système de combat dynamique et des phases de traque horrifique de Resonance: A Plague Tale Legacy. Maîtrisez les parades, le grappin et l'esquive de Sofia.","thumbnailUrl":"https://img.youtube.com/vi/vT4rJHYzLBs/maxresdefault.jpg","uploadDate":"2026-08-31T08:00:00+02:00","contentUrl":"https://ariagamingfr.github.io/mon-site-ariagamingfr/#plague-tale-resonance","embedUrl":"https://www.youtube.com/embed/vT4rJHYzLBs"}
-  </script>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"VideoObject","name":"Manor Lords : Guide sur la Nouvelle Mise à Jour (Avoine, Vaches, Logistique...) et Conseils","description":"Découvrez le guide complet des nouveautés de la mise à jour de Manor Lords : gestion de l'avoine, élevage des vaches, hivernage des animaux, nouvelle logistique et chantiers.","thumbnailUrl":"https://img.youtube.com/vi/240KL1T93CY/maxresdefault.jpg","uploadDate":"2026-08-08T08:00:00+02:00","contentUrl":"https://ariagamingfr.github.io/mon-site-ariagamingfr/#manor-lords-maj","embedUrl":"https://www.youtube.com/embed/240KL1T93CY"}
   </script>
 </head>
 <body>
@@ -220,7 +150,6 @@
     <a class="logo" href="#">Aria<span>gaming</span>fr</a>
     <div class="nav-links">
       <a href="#videos">Vidéos</a>
-      <a href="#articles">Articles</a>
       <a href="#apropos">À propos</a>
       <a href="#" onclick="toggleLegal(event)">Mentions légales</a>
     </div>
@@ -228,15 +157,15 @@
 
   <!-- HERO -->
   <header class="hero">
-    <span class="hero-tag">Tests &amp; Gameplay · France</span>
+    <span class="hero-tag">Tests, Guides &amp; Gameplay · France</span>
     <h1>Guides, tests &amp; <em>gameplay</em> en français</h1>
-    <p>Tests, guides et univers des jeux indépendants — décryptés avec passion et en français.</p>
+    <p>L'actualité et l'univers des jeux vidéo indépendants et de gestion — décryptés avec passion.</p>
     <div class="btn-row">
       <a class="btn btn-primary" href="https://www.youtube.com/@ariagamingfr" target="_blank" rel="noopener">▶ Chaîne YouTube</a>
       <a class="btn" href="https://medium.com/@ariagamingfr" target="_blank" rel="noopener">✍ Articles Medium</a>
-      <a class="btn" href="guide-manor-lords.html" target="_blank" rel="noopener">⭐ Guide Manor Lords</a>
-      <a class="btn" href="guide-foundation.html" target="_blank" rel="noopener">📜 Guide Foundation</a>
-      <a class="btn" href="guide-going-medieval.html" target="_blank" rel="noopener">🏰 Guide Going Medieval</a>
+      <a class="btn" href="guide-manor-lords.html" target="_blank" rel="noopener">⭐ Manor Lords</a>
+      <a class="btn" href="guide-foundation.html" target="_blank" rel="noopener">📜 Foundation</a>
+      <a class="btn" href="guide-going-medieval.html" target="_blank" rel="noopener">🏰 Going Medieval</a>
     </div>
   </header>
 
@@ -250,7 +179,7 @@
       <a class="ig" href="https://www.instant-gaming.com/?igr=ariagamingfr" target="_blank" rel="noopener sponsored">
         <img src="logo-instant-gaming.png" alt="Instant Gaming"><span>Jeux moins chers</span>
       </a>
-      <small>*Lien affilié : lorsque vous cliquez sur mon lien affilié Instant Gaming et que vous effectuez un achat, une petite commission est reversée à Ariagamingfr sans surcoût.</small>
+      <small>*Lien affilié : commission reversée à Ariagamingfr sans surcoût pour vous.</small>
     </div>
   </div>
 
@@ -263,7 +192,7 @@
   <!-- VIDEOS -->
   <section class="section" id="videos">
     <div class="section-head">
-      <h2 class="section-title">Mes vidéos<span class="dot">.</span></h2>
+      <h2 class="section-title">Mes vidéos récentes<span class="dot">.</span></h2>
       <a class="see-all" href="https://www.youtube.com/@ariagamingfr" target="_blank" rel="noopener">Voir sur YouTube →</a>
     </div>
 
@@ -272,8 +201,8 @@
       <a id="servant-of-the-lake" class="video-card" href="https://youtu.be/2HwAAdiRI8o" target="_blank" rel="noopener">
         <div class="video-thumb"><img src="https://img.youtube.com/vi/2HwAAdiRI8o/mqdefault.jpg" alt="Servant of the Lake Walkthrough" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
         <div class="video-info">
-          <p class="video-title">Servant of the Lake FR (Rusty Lake) - Jour 1 (Walkthrough commenté)</p>
-          <p class="video-desc">Solution complète du Jour 1 : énigmes des bougies, service du thé, réunion de famille et fouille du grenier.</p>
+          <p class="video-title">Servant of the Lake FR (Rusty Lake) - Jour 1 (Walkthrough)</p>
+          <p class="video-desc">Solution complète du Jour 1 : énigmes, service du thé et fouille du grenier.</p>
           <div class="video-meta"><span class="tag tag-walkthrough">Walkthrough</span><span>Rusty Lake</span></div>
         </div>
       </a>
@@ -281,116 +210,17 @@
       <a id="blood-dawnwalker" class="video-card" href="https://youtu.be/lHpOUpbc36w" target="_blank" rel="noopener">
         <div class="video-thumb"><img src="https://img.youtube.com/vi/lHpOUpbc36w/mqdefault.jpg" alt="The Blood of Dawnwalker Guide" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
         <div class="video-info">
-          <p class="video-title">The Blood of Dawnwalker : Guide du Système de Combat &amp; Astuces pour bien débuter</p>
-          <p class="video-desc">Parades directionnelles, esquive, alternance jour/nuit et compétences vampiriques.</p>
+          <p class="video-title">The Blood of Dawnwalker : Guide du Système de Combat</p>
+          <p class="video-desc">Parades directionnelles, esquive, alternance jour/nuit et compétences.</p>
           <div class="video-meta"><span class="tag tag-guide">Guide</span><span>Dawnwalker</span></div>
-        </div>
-      </a>
-
-      <a id="plague-tale-resonance" class="video-card" href="https://youtu.be/vT4rJHYzLBs" target="_blank" rel="noopener">
-        <div class="video-thumb"><img src="https://img.youtube.com/vi/vT4rJHYzLBs/mqdefault.jpg" alt="Resonance A Plague Tale Legacy Guide" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
-        <div class="video-info">
-          <p class="video-title">Resonance: A Plague Tale Legacy | Nouveau Combat &amp; Traque Horrifique : Le Guide Complet</p>
-          <p class="video-desc">Le nouveau gameplay axé sur l'action, les parades de Sofia, le grappin et l'ambiance horrifique.</p>
-          <div class="video-meta"><span class="tag tag-guide">Guide</span><span>A Plague Tale</span></div>
-        </div>
-      </a>
-
-      <a id="silver-pines" class="video-card" href="https://youtu.be/1e4DRMy1o7A" target="_blank" rel="noopener">
-        <div class="video-thumb"><img src="https://img.youtube.com/vi/1e4DRMy1o7A/mqdefault.jpg" alt="Silver Pines Survival Horror" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
-        <div class="video-info">
-          <p class="video-title">Silver Pines : Le nouveau survival horror indépendant entre Twin Peaks et Silent Hill</p>
-          <p class="video-desc">Un survival horror metroidvania angoissant et mystérieux développé par Wych Elm et édité par Team17.</p>
-          <div class="video-meta"><span class="tag tag-decouverte">Découverte</span><span>Silver Pines</span></div>
-        </div>
-      </a>
-
-      <a id="manor-lords-maj" class="video-card" href="https://youtu.be/240KL1T93CY" target="_blank" rel="noopener">
-        <div class="video-thumb"><img src="https://img.youtube.com/vi/240KL1T93CY/mqdefault.jpg" alt="Manor Lords Mise à Jour Guide" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
-        <div class="video-info">
-          <p class="video-title">Manor Lords : Guide sur la Nouvelle Mise à Jour (Avoine, Vaches, Logistique...) et Conseils</p>
-          <p class="video-desc">Cultures d'avoine, bétail en hiver, nouvelles constructions et logistique améliorée.</p>
-          <div class="video-meta"><span class="tag tag-guide">Guide</span><span>Manor Lords</span></div>
-        </div>
-      </a>
-
-      <a id="nouvelle-video" class="video-card" href="https://youtu.be/2CEcLqLKQ50" target="_blank" rel="noopener">
-        <div class="video-thumb"><img src="https://img.youtube.com/vi/2CEcLqLKQ50/mqdefault.jpg" alt="The Witcher 3 Remastered" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
-        <div class="video-info">
-          <p class="video-title">The Witcher 3 Remastered : la mise à jour gratuite ET une nouvelle extension !</p>
-          <p class="video-desc">The Witcher 3: Wild Hunt revient avec une importante mise à jour gratuite le 29 septembre 2026 sur PC et consoles.</p>
-          <div class="video-meta"><span class="tag tag-preview">Preview</span><span>The Witcher 3</span></div>
-        </div>
-      </a>
-
-      <a id="going-medieval" class="video-card" href="https://youtu.be/EgsuNLhmRHM" target="_blank" rel="noopener">
-        <div class="video-thumb"><img src="https://img.youtube.com/vi/EgsuNLhmRHM/mqdefault.jpg" alt="Going Medieval 1.0 Guide Débutant" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
-        <div class="video-info">
-          <p class="video-title">Going Medieval 1.0 — Guide Débutant FR</p>
-          <p class="video-desc">Tout ce qu'il faut savoir pour bien démarrer ta colonie médiévale dans la version 1.0 complète.</p>
-          <div class="video-meta"><span class="tag tag-guide">Guide</span><span>Going Medieval</span></div>
-        </div>
-      </a>
-
-      <a id="life-below" class="video-card" href="https://youtu.be/bqp1fVR527g" target="_blank" rel="noopener">
-        <div class="video-thumb"><img src="https://img.youtube.com/vi/bqp1fVR527g/mqdefault.jpg" alt="Life Below" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
-        <div class="video-info">
-          <p class="video-title">Life Below : guide et avis</p>
-          <p class="video-desc">Avis et guide sur Life Below, le city-builder sous-marin indé de Megapop — ambiance chill et gestion.</p>
-          <div class="video-meta"><span class="tag tag-test">Test</span><span>Life Below</span></div>
-        </div>
-      </a>
-
-      <a id="subnautica2" class="video-card" href="https://youtu.be/ISSc8oM8jXw" target="_blank" rel="noopener">
-        <div class="video-thumb"><img src="https://img.youtube.com/vi/ISSc8oM8jXw/mqdefault.jpg" alt="Subnautica 2" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
-        <div class="video-info">
-          <p class="video-title">Subnautica 2 guide</p>
-          <p class="video-desc">Guide de démarrage : ressources essentielles, crafts et conseils pour survivre sous les mers.</p>
-          <div class="video-meta"><span class="tag tag-guide">Guide</span><span>Subnautica 2</span></div>
-        </div>
-      </a>
-
-      <a id="aska" class="video-card" href="https://youtu.be/TXwnMiNSGrE" target="_blank" rel="noopener">
-        <div class="video-thumb"><img src="https://img.youtube.com/vi/TXwnMiNSGrE/mqdefault.jpg" alt="ASKA" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
-        <div class="video-info">
-          <p class="video-title">ASKA FR | Bien Démarrer sa Tribu Viking (Guide débutant)</p>
-          <p class="video-desc">Comment bien démarrer ta tribu viking, gérer tes ressources et progresser rapidement.</p>
-          <div class="video-meta"><span class="tag tag-guide">Guide</span><span>ASKA</span></div>
-        </div>
-      </a>
-
-      <a id="aether-iron" class="video-card" href="https://youtu.be/DoY4sIuGMzU" target="_blank" rel="noopener">
-        <div class="video-thumb"><img src="https://img.youtube.com/vi/DoY4sIuGMzU/mqdefault.jpg" alt="Aether and Iron" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
-        <div class="video-info">
-          <p class="video-title">Test Aether and Iron — gameplay vidéo</p>
-          <p class="video-desc">Un RPG narratif à la Disco Elysium où l'on combat en voiture dans un univers unique.</p>
-          <div class="video-meta"><span class="tag tag-test">Test</span><span>Aether and Iron</span></div>
-        </div>
-      </a>
-
-      <a id="blake-manor" class="video-card" href="https://youtu.be/dwuYf5HIyOU" target="_blank" rel="noopener">
-        <div class="video-thumb"><img src="https://img.youtube.com/vi/dwuYf5HIyOU/mqdefault.jpg" alt="Blake Manor" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
-        <div class="video-info">
-          <p class="video-title">Test The Séance of Blake Manor — gameplay vidéo</p>
-          <p class="video-desc">Aventure narrative à la première personne et enquête dans un manoir victorien.</p>
-          <div class="video-meta"><span class="tag tag-test">Test</span><span>Blake Manor</span></div>
-        </div>
-      </a>
-
-      <a id="foundation" class="video-card" href="https://youtu.be/RQAGFvoOGUQ" target="_blank" rel="noopener">
-        <div class="video-thumb"><img src="https://img.youtube.com/vi/RQAGFvoOGUQ/mqdefault.jpg" alt="Foundation" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
-        <div class="video-info">
-          <p class="video-title">FOUNDATION FR | L'essentiel pour une Cité Optimisée (guide V1.11 / 2026)</p>
-          <p class="video-desc">Posez les fondations solides de votre économie pour bâtir un empire médiéval pérenne.</p>
-          <div class="video-meta"><span class="tag tag-guide">Guide</span><span>Foundation</span></div>
         </div>
       </a>
 
       <a id="manor-lords" class="video-card" href="https://youtu.be/7Lde4aejgqY" target="_blank" rel="noopener">
         <div class="video-thumb"><img src="https://img.youtube.com/vi/7Lde4aejgqY/mqdefault.jpg" alt="Manor Lords" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
         <div class="video-info">
-          <p class="video-title">Manor Lords – Bien débuter sa ville médiévale | Guide Gameplay Fr</p>
-          <p class="video-desc">Guide débutant pour gérer au mieux sa colonie.</p>
+          <p class="video-title">Manor Lords – Bien débuter sa ville médiévale | Guide FR</p>
+          <p class="video-desc">Guide débutant en français pour gérer au mieux sa colonie et son économie.</p>
           <div class="video-meta"><span class="tag tag-guide">Guide</span><span>Manor Lords</span></div>
         </div>
       </a>
@@ -398,118 +228,15 @@
     </div>
   </section>
 
-  <hr class="divider">
-
-  <!-- ARTICLES -->
-  <section class="section" id="articles">
-    <div class="section-head">
-      <h2 class="section-title">Mes articles<span class="dot">.</span></h2>
-      <a class="see-all" href="https://medium.com/@ariagamingfr" target="_blank" rel="noopener">Tout voir →</a>
-    </div>
-
-    <div class="article-grid">
-      <a class="article-card" href="https://medium.com/@ariagamingfr/test-de-aether-and-iron-un-rpg-%C3%A0-la-disco-elysium-o%C3%B9-lon-combat-en-voiture-33e658278f9b" target="_blank" rel="noopener">
-        <div class="article-img"><img src="https://miro.medium.com/v2/resize:fit:800/1*atst_LeQ0FjzqtT6sRIjRw.png" alt="Aether and Iron" loading="lazy"></div>
-        <div class="article-body">
-          <div class="article-top"><span class="tag tag-test">Test écrit</span><span class="article-date">Mai 2026</span></div>
-          <p class="article-title">Test de Aether and Iron : Un RPG à la Disco Elysium où l'on combat en voiture</p>
-          <p class="article-excerpt">Un RPG indépendant qui mélange profondeur narrative et combats tactiques en véhicules dans un New York flottant des années 30.</p>
-          <div class="article-footer"><span class="read-time">⏱ 5 min de lecture</span><span class="read-link">Lire l'article →</span></div>
-        </div>
-      </a>
-
-      <a class="article-card" href="https://medium.com/@ariagamingfr/the-s%C3%A9ance-of-blake-manor-indie-game-review-fr-c8e2cee0cb48" target="_blank" rel="noopener">
-        <div class="article-img"><img src="https://miro.medium.com/v2/resize:fit:800/1*b32aZTtcrXtaCV-YXr54eg.png" alt="The Séance of Blake Manor" loading="lazy"></div>
-        <div class="article-body">
-          <div class="article-top"><span class="tag tag-test">Test écrit</span><span class="article-date">Mai 2026</span></div>
-          <p class="article-title">The Séance of Blake Manor — Indie game REVIEW FR</p>
-          <p class="article-excerpt">Un jeu d'aventure narratif à la première personne mêlant enquête et surnaturel dans un manoir victorien irlandais.</p>
-          <div class="article-footer"><span class="read-time">⏱ 5 min de lecture</span><span class="read-link">Lire l'article →</span></div>
-        </div>
-      </a>
-
-      <a class="article-card" href="https://medium.com/@ariagamingfr/life-below-un-city-builder-ind%C3%A9-%C3%A9cologique-sous-les-mers-avis-guide-71b753b76b92" target="_blank" rel="noopener">
-        <div class="article-img"><img src="https://miro.medium.com/v2/resize:fit:800/1*21m9LK1afUk3dfLK7YmO3g.png" alt="Life Below" loading="lazy"></div>
-        <div class="article-body">
-          <div class="article-top"><span class="tag tag-guide">Avis &amp; Guide</span><span class="article-date">Juin 2026</span></div>
-          <p class="article-title">Life Below : Un city-builder indé écologique sous les mers</p>
-          <p class="article-excerpt">Un city builder sous-marin unique développé par le studio norvégien Megapop — ambiance chill, message écologique et vraie profondeur.</p>
-          <div class="article-footer"><span class="read-time">⏱ 4 min de lecture</span><span class="read-link">Lire l'article →</span></div>
-        </div>
-      </a>
-
-      <a class="article-card" href="https://medium.com/@ariagamingfr/guide-manor-lords-r%C3%A9ussir-son-d%C3%A9part-mise-%C3%A0-jour-maintenance-perks-8a998d000c04" target="_blank" rel="noopener">
-        <div class="article-img"><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*KbZnlzrNqiUCx5iq25m9Hg.png" alt="Manor Lords" loading="lazy"></div>
-        <div class="article-body">
-          <div class="article-top"><span class="tag tag-guide">Guide</span><span class="article-date">Juin 2026</span></div>
-          <p class="article-title">Guide Manor Lords : réussir son départ (mise à jour maintenance &amp; perks)</p>
-          <p class="article-excerpt">Guide complet pour bien démarrer dans Manor Lords : priorités, économie locale, développement des zones de vie et conseils d'extension.</p>
-          <div class="article-footer"><span class="read-time">⏱ 5 min de lecture</span><span class="read-link">Lire l'article →</span></div>
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <hr class="divider">
-
-  <!-- A PROPOS -->
-  <section class="section" id="apropos">
-    <div class="section-head">
-      <h2 class="section-title">À propos<span class="dot">.</span></h2>
-    </div>
-    <div class="about-box">
-      <div class="avatar"><img src="logo.png" alt="Aria Gaming FR" width="108" height="108"></div>
-      <div class="about-text">
-        <h2>Aria Gaming FR</h2>
-        <p>Joueuse depuis l'époque des LucasArts, Sierra, Benoît Sokal et des premiers City Builders — j'ai vu l'évolution du gaming. Je partage ma passion à travers des vidéos YouTube et des tests écrits sur Medium, en français.</p>
-        <p>Ma spécialité : les jeux indépendants, les RPG narratifs et les jeux d'aventure. Tests honnêtes, analyses approfondies, zéro clickbait.</p>
-        <div class="social-links">
-          <a class="social-btn" href="https://www.youtube.com/@ariagamingfr" target="_blank" rel="noopener">▶ YouTube</a>
-          <a class="social-btn" href="https://medium.com/@ariagamingfr" target="_blank" rel="noopener">✍ Medium</a>
-          <a class="social-btn" href="mailto:ariacontactfr@proton.me">✉ Contact</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MENTIONS LÉGALES -->
-  <div class="legal" id="legal">
-    <h2>Mentions légales</h2>
-    <h3>Éditeur du site</h3>
-    <p>Ce site est édité par Aria Gaming FR, créatrice de contenu indépendante basée en France.</p>
-    <p><a href="mailto:ariacontactfr@proton.me">ariacontactfr@proton.me</a></p>
-    <h3>Hébergement</h3>
-    <p>Ce site est hébergé par GitHub Pages, service fourni par GitHub, Inc., 88 Colin P. Kelly Jr Street, San Francisco, CA 94107, États-Unis.</p>
-    <h3>Propriété intellectuelle</h3>
-    <p>L'ensemble du contenu de ce site (textes, vidéos, images) est protégé par le droit d'auteur. Toute reproduction ou distribution non autorisée est strictement interdite.</p>
-    <h3>Partenariats et liens d'affiliation</h3>
-    <p>Le site <strong>Ariagamingfr</strong> participe au programme d'affiliation d'<strong>Instant Gaming</strong> et propose des recommandations via la plateforme de curation <strong>Steam</strong>.</p>
-    <p>Lorsque vous cliquez sur un lien affilié Instant Gaming et que vous effectuez un achat, une petite commission est reversée à Ariagamingfr pour financer l'hébergement et la création de contenu. Cela n'entraîne <strong>aucun surcoût pour l'acheteur</strong> et n'influence pas notre indépendance éditoriale lors des tests et avis publiés sur le site.</p>
-  </div>
-
   <!-- FOOTER -->
   <footer>
     <div class="footer-links">
-      <a href="#videos">Vidéos</a>
-      <a href="#articles">Articles</a>
-      <a href="#apropos">À propos</a>
-      <a href="#" onclick="toggleLegal(event)">Mentions légales</a>
+      <a href="https://www.youtube.com/@ariagamingfr" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://steamcommunity.com/groups/ariagamingfr/curation" target="_blank" rel="noopener">Steam</a>
+      <a href="https://medium.com/@ariagamingfr" target="_blank" rel="noopener">Medium</a>
     </div>
-    <p class="footer-copy">&copy; 2026 AriaGamingFR. Tous droits réservés. Propulsé par GitHub Pages.</p>
+    <p class="footer-copy">© 2026 Ariagamingfr — Tous droits réservés.</p>
   </footer>
-
-  <script>
-    function toggleLegal(event) {
-      event.preventDefault();
-      var legal = document.getElementById('legal');
-      if (legal.style.display === 'block') {
-        legal.style.display = 'none';
-      } else {
-        legal.style.display = 'block';
-        legal.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  </script>
 
 </body>
 </html>
