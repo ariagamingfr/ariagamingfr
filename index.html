@@ -228,7 +228,7 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
+<!-- FOOTER -->
   <footer>
     <div class="footer-links">
       <a href="https://www.youtube.com/@ariagamingfr" target="_blank" rel="noopener">YouTube</a>
@@ -236,7 +236,27 @@
       <a href="https://medium.com/@ariagamingfr" target="_blank" rel="noopener">Medium</a>
     </div>
     <p class="footer-copy">© 2026 Ariagamingfr — Tous droits réservés.</p>
+    <!-- Compteur de visiteurs -->
+    <p style="font-size: 0.7rem; color: #777; margin-top: 0.5rem;">
+      Visiteurs : <span id="visitor-count">Chargement...</span>
+    </p>
   </footer>
 
-</body>
+  <!-- Script pour incrémenter et afficher le compteur -->
+  <script>
+    async function trackVisitor() {
+      try {
+        // Utilisation de l'API publique CounterAPI (remplacez 'ariagamingfr' par un identifiant unique si besoin)
+        let response = await fetch('https://api.counterapi.dev/v1/ariagamingfr/site/hit');
+        let data = await response.json();
+        document.getElementById('visitor-count').textContent = data.count.toLocaleString('fr-FR');
+      } catch (error) {
+        // En cas de blocage par un bloqueur de pub, on cache proprement la ligne
+        document.getElementById('visitor-count').parentElement.style.display = 'none';
+      }
+    }
+    trackVisitor();
+  </script>
+
+  </body>
 </html>
