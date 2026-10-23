@@ -551,7 +551,7 @@ Vous incarnez le détective Red Walker. Affrontez ou évitez les monstres du vil
     </div>
   </section>
 
-  <!-- ================================================================= -->
+<!-- ================================================================= -->
   <!-- 📍 REPÈRE 7 : PIED DE PAGE ET COMPTEUR DE VISITEURS               -->
   <!-- ================================================================= -->
   <footer>
@@ -563,23 +563,11 @@ Vous incarnez le détective Red Walker. Affrontez ou évitez les monstres du vil
     </div>
     <p class="footer-copy">© 2026 Ariagamingfr — Tous droits réservés.</p>
 
-    <!-- COMPTEUR DYNAMIQUE COUNTERAPI -->
-  
-
-        <footer>
-    <div class="footer-links">
-      <a href="https://www.youtube.com/@ariagamingfr" target="_blank" rel="noopener">YouTube</a>
-      <a href="https://steamcommunity.com/groups/ariagamingfr/curation" target="_blank" rel="noopener">Steam</a>
-      <a href="apropos.html">À propos</a>
-      <a href="mentions-legales.html">Mentions légales</a>
-    </div>
-    <p class="footer-copy">© 2026 Ariagamingfr — Tous droits réservés.</p>
-
-    <!-- NOUVEAU COMPTEUR DE VISITEURS -->
-    <div style="margin-top: 0.6rem;">
-      <!-- Collez ici le code HTML / le lien fourni par votre nouveau compteur -->
-    </div>
-</footer>
+    <!-- COMPTEUR DE VISITES (COUNTAPI) -->
+    <p style="font-size: 0.75rem; color: #888; margin-top: 0.6rem;">
+      Visites : <span id="visitor-count">1</span>
+    </p>
+  </footer>
 
   <!-- ================================================================= -->
   <!-- 📍 REPÈRE 8 : SCRIPTS JAVASCRIPT (CARROUSEL, DEPLOIEMENT, COUNTER) -->
@@ -622,9 +610,20 @@ Vous incarnez le détective Red Walker. Affrontez ou évitez les monstres du vil
           }
         });
       }
+
+      // 8.3 NOUVEAU COMPTEUR DE VISITES SÉCURISÉ (COUNTAPI.XYZ)
+      fetch('https://api.countapi.xyz/hit/ariagamingfr-website/visits')
+        .then(res => res.json())
+        .then(data => {
+          const countSpan = document.getElementById('visitor-count');
+          if (countSpan && data.value) {
+            countSpan.textContent = data.value.toLocaleString('fr-FR');
+          }
+        })
+        .catch(err => {
+          console.log("Erreur compteur:", err);
+        });
     });
-
-
   </script>
 
 </body>
