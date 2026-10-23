@@ -564,10 +564,22 @@ Vous incarnez le détective Red Walker. Affrontez ou évitez les monstres du vil
     <p class="footer-copy">© 2026 Ariagamingfr — Tous droits réservés.</p>
 
     <!-- COMPTEUR DYNAMIQUE COUNTERAPI -->
-    <p style="font-size: 0.75rem; color: #888; margin-top: 0.6rem;">
-      Visites : <span id="visitor-count">Chargement...</span>
-    </p>
-  </footer>
+  
+
+        <footer>
+    <div class="footer-links">
+      <a href="https://www.youtube.com/@ariagamingfr" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://steamcommunity.com/groups/ariagamingfr/curation" target="_blank" rel="noopener">Steam</a>
+      <a href="apropos.html">À propos</a>
+      <a href="mentions-legales.html">Mentions légales</a>
+    </div>
+    <p class="footer-copy">© 2026 Ariagamingfr — Tous droits réservés.</p>
+
+    <!-- NOUVEAU COMPTEUR DE VISITEURS -->
+    <div style="margin-top: 0.6rem;">
+      <!-- Collez ici le code HTML / le lien fourni par votre nouveau compteur -->
+    </div>
+</footer>
 
   <!-- ================================================================= -->
   <!-- 📍 REPÈRE 8 : SCRIPTS JAVASCRIPT (CARROUSEL, DEPLOIEMENT, COUNTER) -->
@@ -612,23 +624,7 @@ Vous incarnez le détective Red Walker. Affrontez ou évitez les monstres du vil
       }
     });
 
-    // 8.3 RECUPERATION ET AFFICHAGE DU COMPTEUR DE VISITES
-    async function trackVisitor() {
-      try {
-        let response = await fetch('https://api.counterapi.dev/v1/ariagamingfr/site/hit');
-        let data = await response.json();
-        const countSpan = document.getElementById('visitor-count');
-        if (countSpan && data.count) {
-          countSpan.textContent = data.count.toLocaleString('fr-FR');
-        }
-      } catch (error) {
-        const countSpan = document.getElementById('visitor-count');
-        if (countSpan && countSpan.parentElement) {
-          countSpan.parentElement.style.display = 'none';
-        }
-      }
-    }
-    trackVisitor();
+
   </script>
 
 </body>
