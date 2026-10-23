@@ -545,13 +545,13 @@ Vous incarnez le détective Red Walker. Affrontez ou évitez les monstres du vil
 
     </div>
 
-    <!-- BOUTON DÉROULANT POUR LES VIDÉOS -->
+ <!-- BOUTON DÉROULANT POUR LES VIDÉOS -->
     <div class="more-btn-container">
       <button class="toggle-videos-btn" id="toggleVideosBtn">Afficher toutes les vidéos (+11)</button>
     </div>
   </section>
 
-<!-- ================================================================= -->
+  <!-- ================================================================= -->
   <!-- 📍 REPÈRE 7 : PIED DE PAGE ET COMPTEUR DE VISITEURS               -->
   <!-- ================================================================= -->
   <footer>
@@ -562,15 +562,10 @@ Vous incarnez le détective Red Walker. Affrontez ou évitez les monstres du vil
       <a href="mentions-legales.html">Mentions légales</a>
     </div>
     <p class="footer-copy">© 2026 Ariagamingfr — Tous droits réservés.</p>
-
-    <!-- COMPTEUR DE VISITES (COUNTAPI) -->
-    <p style="font-size: 0.75rem; color: #888; margin-top: 0.6rem;">
-      Visites : <span id="visitor-count">1</span>
-    </p>
   </footer>
 
   <!-- ================================================================= -->
-  <!-- 📍 REPÈRE 8 : SCRIPTS JAVASCRIPT (CARROUSEL, DEPLOIEMENT, COUNTER) -->
+  <!-- 📍 REPÈRE 8 : SCRIPTS JAVASCRIPT (CARROUSEL, DEPLOIEMENT)         -->
   <!-- ================================================================= -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -610,19 +605,6 @@ Vous incarnez le détective Red Walker. Affrontez ou évitez les monstres du vil
           }
         });
       }
-
-      // 8.3 NOUVEAU COMPTEUR DE VISITES SÉCURISÉ (COUNTAPI.XYZ)
-      fetch('https://api.countapi.xyz/hit/ariagamingfr-website/visits')
-        .then(res => res.json())
-        .then(data => {
-          const countSpan = document.getElementById('visitor-count');
-          if (countSpan && data.value) {
-            countSpan.textContent = data.value.toLocaleString('fr-FR');
-          }
-        })
-        .catch(err => {
-          console.log("Erreur compteur:", err);
-        });
     });
   </script>
 
