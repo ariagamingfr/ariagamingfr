@@ -49,20 +49,130 @@
     a { color: inherit; }
     h1, h2, h3, .logo { font-family: 'Lora', serif; }
 
-    /* BARRE DE NAVIGATION */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0.8rem 2rem;
-      background: #2b2b2b;
-      color: #fff;
-      border-bottom: 3px solid var(--accent);
+    /* EN-TÊTE SUPÉRIEUR (Zone Blanche avec Logo & Réseaux Sociaux) */
+    .header-top {
+      background-color: #ffffff;
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
     }
-    .logo { font-weight: 700; font-size: 1.25rem; text-decoration: none; color: #fff; }
-    .logo span { color: #f28b66; }
-    .nav-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-    .nav-links a { font-size: 0.88rem; font-weight: 500; color: #ccc; text-decoration: none; transition: color .2s; cursor: pointer; }
-    .nav-links a:hover { color: #fff; }
+
+    .top-logo {
+      font-family: 'Lora', serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #1a1a1a;
+      text-decoration: none;
+    }
+
+    .top-logo span {
+      color: var(--accent);
+    }
+
+    /* Icônes Réseaux Sociaux */
+    .social-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .social-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+
+    .social-icon.yt { 
+      background-color: #ff0000; 
+    }
+
+    .social-icon.insta { 
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+    }
+
+    .social-icon.theme-toggle {
+      background-color: #f0f0f0;
+      color: #333;
+      border-radius: 50%;
+      margin-left: 8px;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* BARRE DE NAVIGATION NOIRE */
+    nav.main-nav {
+      background-color: #1c1c1c;
+      border-bottom: none;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+    }
+
+    .nav-links a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 0.85rem 0;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Champ de recherche dans la bande noire */
+    .nav-search {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-search input {
+      padding: 0.35rem 0.6rem;
+      border-radius: 3px;
+      border: 1px solid #444;
+      background-color: #e5e5e5;
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .nav-search button {
+      background: none;
+      border: none;
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
 
     /* HERO / EN-TÊTE PRINCIPAL */
     .hero { max-width: 800px; margin: 0 auto; padding: 4rem 1.5rem 2.5rem; text-align: center; background: var(--box-bg); border-bottom: 1px solid var(--line); }
@@ -134,7 +244,7 @@
 
     .news-card:hover { border-color: var(--accent); background: #fff; }
 
-    /* STYLE SPÉCIFIQUE ENCART FOUNDATION (AVEC BOX-ART.PNG EN FILIGRANE) */
+    /* STYLE SPÉCIFIQUE ENCART FOUNDATION */
     .news-card.foundation-card {
       position: relative;
       overflow: hidden;
@@ -235,24 +345,44 @@
 <body>
 
   <!-- ================================================================= -->
-  <!-- 📍 REPÈRE 1 : BARRE DE NAVIGATION (NAVBAR)                       -->
+  <!-- 📍 EN-TÊTE HAUT DE PAGE (Logo + Réseaux)                          -->
   <!-- ================================================================= -->
-  <nav>
-    <a class="logo" href="#">Aria<span>gaming</span>fr</a>
-    <div class="nav-links">
-      <a href="#actu">Sorties &amp; Actu</a>
-      <a href="#videos">Vidéos</a>
-      <a href="apropos.html">À propos</a>
-      <a href="mentions-legales.html">Mentions légales</a>
+  <header class="header-top">
+    <a href="#" class="top-logo">ARIA<span>GAMINGFR</span></a>
+    
+    <div class="social-links">
+      <a href="https://www.youtube.com/@ariagamingfr" target="_blank" rel="noopener" class="social-icon yt" title="YouTube">▶</a>
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="social-icon insta" title="Instagram">📸</a>
+      <button class="social-icon theme-toggle" title="Mode sombre/clair">☀️</button>
+    </div>
+  </header>
+
+  <!-- ================================================================= -->
+  <!-- 📍 BANDE NOIRE DE NAVIGATION                                      -->
+  <!-- ================================================================= -->
+  <nav class="main-nav">
+    <div class="nav-container">
+      <div class="nav-links">
+        <a href="#">🏠</a>
+        <a href="#actu">Actualités</a>
+        <a href="#videos">Jeux Vidéo</a>
+        <a href="#videos">Critiques</a>
+        <a href="apropos.html">À propos</a>
+      </div>
+
+      <div class="nav-search">
+        <input type="text" placeholder="Rechercher...">
+        <button type="submit">🔍</button>
+      </div>
     </div>
   </nav>
 
   <!-- ================================================================= -->
-  <!-- 📍 REPÈRE 2 : HERO (EN-TÊTE PRINCIPAL DE PRÉSENTATION)             -->
+  <!-- 📍 HERO (EN-TÊTE PRINCIPAL DE PRÉSENTATION)                       -->
   <!-- ================================================================= -->
   <header class="hero">
     <span class="hero-tag">Tests, Guides &amp; Gameplay · France</span>
-    <h1>Guides, tests &amp; <em>gameplay</h1>
+    <h1>Guides, tests &amp; <em>gameplay</em></h1>
     <p>L'actualité et l'univers des jeux vidéo (indie games, rpg, survie, citybuilder, stratégie...)</p>
     <div class="btn-row">
       <a class="btn btn-primary" href="https://www.youtube.com/@ariagamingfr" target="_blank" rel="noopener">▶ Chaîne YouTube</a>
@@ -264,7 +394,7 @@
   </header>
 
   <!-- ================================================================= -->
-  <!-- 📍 REPÈRE 3 : BLOC DES PARTENAIRES (STEAM / INSTANT GAMING)        -->
+  <!-- 📍 BLOC DES PARTENAIRES (STEAM / INSTANT GAMING)                  -->
   <!-- ================================================================= -->
   <div class="partners">
     <div class="partner">
@@ -280,7 +410,7 @@
   </div>
 
   <!-- ================================================================= -->
-  <!-- 📍 REPÈRE 4 : BARRE DES STATISTIQUES                              -->
+  <!-- 📍 BARRE DES STATISTIQUES                                         -->
   <!-- ================================================================= -->
   <div class="stats-bar">
     <div class="stat"><span class="stat-n">14</span><span class="stat-l">Vidéos</span></div>
@@ -288,7 +418,7 @@
   </div>
 
   <!-- ================================================================= -->
-  <!-- 📍 REPÈRE 5 : SECTION ACTUALITÉS & SORTIES (CARROUSEL INTERACTIF) -->
+  <!-- 📍 SECTION ACTUALITÉS & SORTIES                                   -->
   <!-- ================================================================= -->
   <section class="section" id="actu">
     <div class="section-head">
@@ -303,9 +433,7 @@
     <div class="carousel-wrapper" id="newsCarouselWrapper">
       <div class="carousel-track">
 
-        <!-- ─────────────────────────────────────────────────────────── -->
-        <!-- 📍 REPÈRE 5.1 : ENCART 1 - FOUNDATION (AVEC BOX-ART.PNG)    -->
-        <!-- ─────────────────────────────────────────────────────────── -->
+        <!-- ENCART 1 - FOUNDATION -->
         <div class="news-card foundation-card">
           <div class="news-header">
             <span class="tag tag-sortie">Sortie DLC</span>
@@ -318,8 +446,8 @@
 
           <div class="news-details">
             <p><strong>Dev / Éditeur :</strong> Polymorph Games</p>
-            <p><strong>Contenu DLC :</strong> Fermette commune (poulets, cochons, oies, poussins/porcelets/oisillons), vergers (pommes, prunes, noisettes), fermes à navets &amp; choux, cidrerie, four de séchage, boucherie, aire de fête à la taverne (repas, jongleurs, ménestrels, comédiens, tenues de fête &amp; visite du Roi).</p>
-            <p><strong>MAJ Gratuite :</strong> Streaming de textures (optimisation grandes villes / VRAM limitée), Taverne Élégante, pièces pour la Scierie, ambiance lumineuse "Aube", refonte du registre royal, recherche par mots-clés dans le menu Construction &amp; encyclopédie.</p>
+            <p><strong>Contenu DLC :</strong> Fermette commune (poulets, cochons, oies...), vergers (pommes, prunes, noisettes), fermes à navets &amp; choux, cidrerie, four de séchage, boucherie, aire de fête à la taverne.</p>
+            <p><strong>MAJ Gratuite :</strong> Streaming de textures, Taverne Élégante, pièces pour la Scierie, ambiance lumineuse "Aube", refonte du registre royal, recherche par mots-clés.</p>
           </div>
 
           <div class="news-footer-guides">
@@ -331,81 +459,62 @@
           </div>
         </div>
 
-        <!-- ─────────────────────────────────────────────────────────── -->
-        <!-- 📍 REPÈRE 5.2 : EMPLACEMENT POUR VOS PROCHAINS ENCARTS      -->
-        <!-- (Dupliquez le bloc news-card ci-dessus pour vos futurs jeux)-->
-        <!-- ─────────────────────────────────────────────────────────── -->
-<!-- ENCART : PÉPITE INDÉ (AVEC MINIATURE) -->
-<div class="news-card" style="border-left: 4px solid var(--accent); background: #fdfcf9;">
-  
-  <!-- Miniature visuelle du jeu -->
-  <div style="width: 100%; height: 140px; background: #e0deda; border-radius: 2px; overflow: hidden; margin-bottom: 0.8rem;">
-    <!-- Remplacez 'silver pines.jpg' par le fichier image de votre jeu -->
-    <img src="Silver Pines.png" alt="Visuel" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-  </div>
+        <!-- ENCART 2 - SILVER PINES -->
+        <div class="news-card" style="border-left: 4px solid var(--accent); background: #fdfcf9;">
+          <div style="width: 100%; height: 140px; background: #e0deda; border-radius: 2px; overflow: hidden; margin-bottom: 0.8rem;">
+            <img src="Silver Pines.png" alt="Visuel" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+          <div class="news-header">
+            <span class="tag tag-decouverte">Pépite Indé 🖋️</span>
+            <span class="news-date">Coup de cœur</span>
+          </div>
+          <h3 class="news-title">Silver Pines</h3>
+          <p class="news-desc">
+            J'ai testé SILVER PINES un survival horror metroidvania qui mélange l'ambiance de Twin Peaks et Silent Hill. Incarnez le détective Red Walker dans ce jeu indépendant stylé utilisant la rotoscopie.
+          </p>
+          <div class="news-details">
+            <p><strong>Genre :</strong> Aventure / Metroidvania 2.5D / Indé</p>
+            <p><strong>Pourquoi y jouer :</strong> Direction artistique, Ambiance.</p>
+          </div>
+          <div class="news-footer-guides">
+            <span class="news-footer-label">Découvrir le test :</span>
+            <div class="news-guides-links">
+              <a class="news-guide-btn" href="https://youtu.be/1e4DRMy1o7A" target="_blank" rel="noopener">▶ Voir la vidéo</a>
+            </div>
+          </div>
+        </div>
 
-  <div class="news-header">
-    <span class="tag tag-decouverte">Pépite Indé 🖋️</span>
-    <span class="news-date">Coup de cœur</span>
-  </div>
-  
-  <h3 class="news-title">Silver Pines</h3>
-  
-  <p class="news-desc">
-    
-J'ai testé SILVER PINES un survival horror metroidvania qui mélange l'ambiance de Twin Peaks (D.Lynch) et Silent Hill . Ce jeu indépendant stylé qui utilise la rotoscopie vaut le détour.
+        <!-- ENCART 3 - PERMAFROST -->
+        <div class="news-card" style="border-left: 4px solid var(--accent); background: #fdfcf9;">
+          <div style="width: 100%; height: 140px; background: #e0deda; border-radius: 2px; overflow: hidden; margin-bottom: 0.8rem;">
+            <img src="Permafrost.png" alt="Permafrost" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+          <div class="news-header">
+            <span class="tag tag-decouverte">Sortie Actu</span>
+            <span class="news-date">9 octobre 2026</span>
+          </div>
+          <h3 class="news-title">Permafrost est disponible en Accès Anticipé !</h3>
+          <p class="news-desc">
+            Découvrez le nouveau jeu de survie post-apocalyptique glacé de <strong>SpaceRocket Games</strong> et <strong>Toplitz Productions</strong> avec un compagnon canin.
+          </p>
+          <div class="news-details">
+            <p><strong>Développeur :</strong> SpaceRocket Games</p>
+            <p><strong>Éditeur :</strong> Toplitz Productions</p>
+          </div>
+          <div class="news-footer-guides">
+            <span class="news-footer-label">Découvrir le jeu :</span>
+            <div class="news-guides-links">
+              <a class="news-guide-btn" href="https://youtu.be/h16zUg-WrBw" target="_blank" rel="noopener">▶ Voir ma vidéo / découverte</a>
+            </div>
+          </div>
+        </div>
 
-Vous incarnez le détective Red Walker. Affrontez ou évitez les monstres du village, récupérez des ressources et résolvez des énigmes débloquer des passages et découvrir la vérité l'histoire. Pensez à fouiller tous les recoins, car chaque munition, bouteille de soin et pièce d'amélioration vous sera précieuse.
-  </p>
-
-  <div class="news-details">
-    <p><strong>Genre :</strong> Aventure / Metroidvania 2.5D / Indé</p>
-    <p><strong>Pourquoi y jouer :</strong> Direction artistique, Ambiance.</p>
-  </div>
-
-  <div class="news-footer-guides">
-    <span class="news-footer-label">Découvrir le test :</span>
-    <div class="news-guides-links">
-      <a class="news-guide-btn" href="https://youtu.be/1e4DRMy1o7A" target="_blank" rel="noopener">▶ Voir la vidéo </a>
+      </div>
     </div>
-  </div>
-</div>
-<!-- ENCART ACTU : SORTIE DE PERMAFROST -->
-<div class="news-card" style="border-left: 4px solid var(--accent); background: #fdfcf9;">
-  
-  <!-- Miniature visuelle du jeu -->
-  <div style="width: 100%; height: 140px; background: #e0deda; border-radius: 2px; overflow: hidden; margin-bottom: 0.8rem;">
-    <img src="Permafrost.png" alt="Permafrost" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-  </div>
-
-  <div class="news-header">
-    <span class="tag tag-decouverte">Sortie Actu</span>
-    <span class="news-date">9 octobre 2026</span>
-  </div>
-  
-  <h3 class="news-title">Permafrost est disponible en Accès Anticipé !</h3>
-  
-  <p class="news-desc">
-    Découvrez le nouveau jeu de survie post-apocalyptique glacé développé par <strong>SpaceRocket Games</strong> et édité par <strong>Toplitz Productions</strong>.Vous êtes accompagné par un chien  dans votre aventure. Le jeu n'est pas parfait, mais vous aurez envie d'y revenir. Les paysages sont beaux. Il est encore en développement et une roadmap sur les prochains ajouts est disponible.
-  </p>
-
-  <div class="news-details">
-    <p><strong>Développeur :</strong> SpaceRocket Games</p>
-    <p><strong>Éditeur :</strong> Toplitz Productions</p>
-    <p><strong>Date de sortie :</strong> 9 octobre 2026 (Early Access)</p>
-  </div>
-
-  <div class="news-footer-guides">
-    <span class="news-footer-label">Découvrir le jeu :</span>
-    <div class="news-guides-links">
-      <a class="news-guide-btn" href="https://youtu.be/h16zUg-WrBw" target="_blank" rel="noopener">▶ Voir ma vidéo / découverte</a>
-    </div>
-  </div>
-</div>
   </section>
 
   <!-- ================================================================= -->
-  <!-- 📍 REPÈRE 6 : SECTION MES VIDÉOS (GRILLE + BOUTON VOIR PLUS)       -->
+  <!-- 📍 SECTION MES VIDÉOS                                             -->
   <!-- ================================================================= -->
   <section class="section" id="videos">
     <div class="section-head">
@@ -414,10 +523,9 @@ Vous incarnez le détective Red Walker. Affrontez ou évitez les monstres du vil
     </div>
 
     <div class="video-grid" id="videoGrid">
-
-      <!-- 📍 REPÈRE 6.1 : LES 3 PREMIÈRES VIDÉOS (VISIBLES DÉFAUT) -->
+      <!-- 3 Premières vidéos visibles -->
       <a class="video-card" href="https://youtu.be/2HwAAdiRI8o" target="_blank" rel="noopener">
-        <div class="video-thumb"><img src="https://img.youtube.com/vi/2HwAAdiRI8o/mqdefault.jpg" alt="Servant of the Lake Walkthrough" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+        <div class="video-thumb"><img src="https://img.youtube.com/vi/2HwAAdiRI8o/mqdefault.jpg" alt="Servant of the Lake" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
         <div class="video-info">
           <p class="video-title">Servant of the Lake FR (Rusty Lake) - Jour 1 (Walkthrough)</p>
           <p class="video-desc">Solution complète du Jour 1 : énigmes des bougies, service du thé et fouille du grenier.</p>
@@ -426,7 +534,7 @@ Vous incarnez le détective Red Walker. Affrontez ou évitez les monstres du vil
       </a>
 
       <a class="video-card" href="https://youtu.be/lHpOUpbc36w" target="_blank" rel="noopener">
-        <div class="video-thumb"><img src="https://img.youtube.com/vi/lHpOUpbc36w/mqdefault.jpg" alt="The Blood of Dawnwalker Guide" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+        <div class="video-thumb"><img src="https://img.youtube.com/vi/lHpOUpbc36w/mqdefault.jpg" alt="Dawnwalker" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
         <div class="video-info">
           <p class="video-title">The Blood of Dawnwalker : Guide du Système de Combat</p>
           <p class="video-desc">Parades directionnelles, esquive, alternance jour/nuit et compétences vampiriques.</p>
@@ -435,7 +543,7 @@ Vous incarnez le détective Red Walker. Affrontez ou évitez les monstres du vil
       </a>
 
       <a class="video-card" href="https://youtu.be/vT4rJHYzLBs" target="_blank" rel="noopener">
-        <div class="video-thumb"><img src="https://img.youtube.com/vi/vT4rJHYzLBs/mqdefault.jpg" alt="Resonance A Plague Tale Legacy Guide" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+        <div class="video-thumb"><img src="https://img.youtube.com/vi/vT4rJHYzLBs/mqdefault.jpg" alt="A Plague Tale" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
         <div class="video-info">
           <p class="video-title">Resonance: A Plague Tale Legacy | Guide Complet Combat</p>
           <p class="video-desc">Le nouveau gameplay axé sur l'action, les parades de Sofia, le grappin et l'ambiance horrifique.</p>
@@ -443,9 +551,9 @@ Vous incarnez le détective Red Walker. Affrontez ou évitez les monstres du vil
         </div>
       </a>
 
-      <!-- 📍 REPÈRE 6.2 : LES 11 VIDÉOS MASQUÉES (SE DÉPLOIENT AU CLIC) -->
+      <!-- 11 vidéos masquées -->
       <a class="video-card hidden" href="https://youtu.be/1e4DRMy1o7A" target="_blank" rel="noopener">
-        <div class="video-thumb"><img src="https://img.youtube.com/vi/1e4DRMy1o7A/mqdefault.jpg" alt="Silver Pines Survival Horror" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+        <div class="video-thumb"><img src="https://img.youtube.com/vi/1e4DRMy1o7A/mqdefault.jpg" alt="Silver Pines" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
         <div class="video-info">
           <p class="video-title">Silver Pines : Survival Horror entre Twin Peaks et Silent Hill</p>
           <p class="video-desc">Un survival horror metroidvania angoissant développé par Wych Elm et édité par Team17.</p>
@@ -454,7 +562,7 @@ Vous incarnez le détective Red Walker. Affrontez ou évitez les monstres du vil
       </a>
 
       <a class="video-card hidden" href="https://youtu.be/240KL1T93CY" target="_blank" rel="noopener">
-        <div class="video-thumb"><img src="https://img.youtube.com/vi/240KL1T93CY/mqdefault.jpg" alt="Manor Lords Mise à Jour Guide" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+        <div class="video-thumb"><img src="https://img.youtube.com/vi/240KL1T93CY/mqdefault.jpg" alt="Manor Lords" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
         <div class="video-info">
           <p class="video-title">Manor Lords : Guide Nouvelle Mise à Jour (Avoine, Vaches...)</p>
           <p class="video-desc">Cultures d'avoine, bétail en hiver, nouvelles constructions et logistique améliorée.</p>
@@ -463,7 +571,7 @@ Vous incarnez le détective Red Walker. Affrontez ou évitez les monstres du vil
       </a>
 
       <a class="video-card hidden" href="https://youtu.be/2CEcLqLKQ50" target="_blank" rel="noopener">
-        <div class="video-thumb"><img src="https://img.youtube.com/vi/2CEcLqLKQ50/mqdefault.jpg" alt="The Witcher 3 Remastered" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+        <div class="video-thumb"><img src="https://img.youtube.com/vi/2CEcLqLKQ50/mqdefault.jpg" alt="Witcher 3" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
         <div class="video-info">
           <p class="video-title">The Witcher 3 Remastered : Mise à jour gratuite &amp; extension</p>
           <p class="video-desc">The Witcher 3 revient avec une importante mise à jour gratuite et du nouveau contenu.</p>
@@ -472,7 +580,7 @@ Vous incarnez le détective Red Walker. Affrontez ou évitez les monstres du vil
       </a>
 
       <a class="video-card hidden" href="https://youtu.be/EgsuNLhmRHM" target="_blank" rel="noopener">
-        <div class="video-thumb"><img src="https://img.youtube.com/vi/EgsuNLhmRHM/mqdefault.jpg" alt="Going Medieval 1.0 Guide Débutant" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
+        <div class="video-thumb"><img src="https://img.youtube.com/vi/EgsuNLhmRHM/mqdefault.jpg" alt="Going Medieval" loading="lazy"><div class="play-overlay"><div class="play-circle">▶</div></div></div>
         <div class="video-info">
           <p class="video-title">Going Medieval 1.0 — Guide Débutant FR</p>
           <p class="video-desc">Tout ce qu'il faut savoir pour bien démarrer ta colonie médiévale dans la version 1.0.</p>
@@ -542,17 +650,15 @@ Vous incarnez le détective Red Walker. Affrontez ou évitez les monstres du vil
           <div class="video-meta"><span class="tag tag-guide">Guide</span><span>Manor Lords</span></div>
         </div>
       </a>
-
     </div>
 
- <!-- BOUTON DÉROULANT POUR LES VIDÉOS -->
     <div class="more-btn-container">
       <button class="toggle-videos-btn" id="toggleVideosBtn">Afficher toutes les vidéos (+11)</button>
     </div>
   </section>
 
   <!-- ================================================================= -->
-  <!-- 📍 REPÈRE 7 : PIED DE PAGE ET COMPTEUR DE VISITEURS               -->
+  <!-- 📍 FOOTER                                                         -->
   <!-- ================================================================= -->
   <footer>
     <div class="footer-links">
@@ -565,15 +671,14 @@ Vous incarnez le détective Red Walker. Affrontez ou évitez les monstres du vil
   </footer>
 
   <!-- ================================================================= -->
-  <!-- 📍 REPÈRE 8 : SCRIPTS JAVASCRIPT (CARROUSEL, DEPLOIEMENT)         -->
+  <!-- 📍 SCRIPTS JAVASCRIPT                                             -->
   <!-- ================================================================= -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      // 8.1 GESTION DU DÉFILEMENT DU CARROUSEL ACTUALITÉS
       const newsWrapper = document.getElementById('newsCarouselWrapper');
       const newsPrevBtn = document.getElementById('newsPrevBtn');
       const newsNextBtn = document.getElementById('newsNextBtn');
-      const cardWidth = 380; // Largeur d'une carte d'actualité + écartement
+      const cardWidth = 380;
 
       if (newsPrevBtn && newsNextBtn && newsWrapper) {
         newsNextBtn.addEventListener('click', () => {
@@ -585,7 +690,6 @@ Vous incarnez le détective Red Walker. Affrontez ou évitez les monstres du vil
         });
       }
 
-      // 8.2 GESTION DU BOUTON AFFICHER/RÉDUIRE TOUTES LES VIDÉOS
       const toggleBtn = document.getElementById('toggleVideosBtn');
       const hiddenCards = document.querySelectorAll('.video-card.hidden');
       let isExpanded = false;
